@@ -73,12 +73,14 @@ strong {
   --bg-color: #0a0300;
   --font-title: "Oswald";
   --font-text: "Raleway";
+  --header-height: 4rem;
 }
 
 body {
   font-family: "Raleway", sans-serif;
   background-color: var(--bg-color);
   color: #fafafa;
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -87,6 +89,10 @@ h3,
 h4 {
   font-family: "Oswald", serif;
   letter-spacing: 0.6px;
+}
+
+.serif {
+  font-family: var(--font-title);
 }
 
 :is(h1, h2, h3, h4) + p {
@@ -148,8 +154,22 @@ section:not(.top-section) {
 }
 
 .header-main {
-  padding: 1rem 0;
   background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  transition: transform 0.3s ease;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+}
+
+.header-main.overlaid {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 4;
 }
 
 header ul {
@@ -158,7 +178,14 @@ header ul {
 }
 
 .hero {
-  margin-top: 90px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: var(--header-height);
 }
 
 .hero-container {
@@ -170,7 +197,7 @@ header ul {
   position: relative;
 }
 
-.hero-container > *:not(.overlay-hero) {
+.overlaid {
   position: relative;
   z-index: 2;
 }
@@ -199,6 +226,7 @@ header ul {
   justify-content: center;
   align-items: center;
   margin: 2rem 0;
+  align-self: center;
 }
 .hero-cta .btn {
   display: flex;
@@ -284,7 +312,7 @@ footer {
   align-items: center;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .galleries {
     display: none;
   }
