@@ -1,0 +1,72 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --default-space: 1rem;
+  font-size: 16px;
+}
+
+.btn {
+  background: none;
+  border: none;
+  color: currentColor;
+}
+
+.flow > * + * {
+  margin-top: calc(var(--default-space) * 2) !important;
+}
+
+.centered-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  line-height: 1.4;
+}
+p.center {
+  text-align: center;
+}
+p.faded {
+  color: rgba(0, 0, 0, 0.38);
+}
+p.note {
+  font-size: 0.8rem;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+strong {
+  font-weight: 900;
+}
+
+.horizontal-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.horizontal-items.centered {
+  justify-content: center;
+  gap: 2rem;
+}
+
+/*# sourceMappingURL=basic.css.map */
