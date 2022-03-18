@@ -7,15 +7,13 @@ const HERO = document.querySelector(".hero-container");
 let scrollMap = 0;
 
 function moveBackground() {
+  const scrollMap = window.scrollY / 50;
   HERO ? (HERO.style.backgroundPosition = `center ${scrollMap * 25}px`) : null;
-  document.body.style.backgroundColor = `hsl(250, 0%, ${scrollMap / 2}%)`;
+  // document.body.style.backgroundColor = `hsl(250, 0%, ${scrollMap / 2}%)`;
+  requestAnimationFrame(moveBackground);
 }
 
-window.onscroll = function () {
-  return;
-  scrollMap = window.scrollY / 50;
-  requestAnimationFrame(moveBackground);
-};
+requestAnimationFrame(moveBackground);
 
 let scrollInterval = setInterval(checkScroll, 1000);
 

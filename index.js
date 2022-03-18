@@ -53,5 +53,5 @@ app.get("/images/:category", async (req, res) => {
 const server = http.createServer(app);
 
 server.listen(PORT, HOSTNAME, null, () => {
-  console.log(process.env);
+  console.log("listening on port " + PORT);
 });

@@ -361,3 +361,27 @@ img.shown {
   opacity: 1;
   transform: scale(1);
 }
+
+/* ----- ----- */
+
+.section-about {
+  padding: 2rem 0;
+  background: linear-gradient(to right, rgba(40, 20, 62, 0.5), transparent);
+}
+
+.headshot-image {
+  img {
+    border-radius: 1000px;
+    object-fit: cover;
+    object-position: center top;
+    position: relative;
+  }
+}
+
+.article-about {
+  max-width: 40ch;
+
+  p {
+    line-height: 1.8;
+  }
+}

@@ -77,6 +77,11 @@ strong {
   align-items: center;
 }
 
+.horizontal-items.start {
+  justify-content: start;
+  gap: 2em;
+}
+
 .horizontal-items.centered {
   justify-content: center;
   gap: 2rem;

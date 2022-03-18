@@ -64,6 +64,11 @@ strong {
   align-items: center;
 }
 
+.horizontal-items.start {
+  justify-content: start;
+  gap: 2em;
+}
+
 .horizontal-items.centered {
   justify-content: center;
   gap: 2rem;
@@ -416,6 +421,26 @@ footer ul > * + * {
 img.shown {
   opacity: 1;
   transform: scale(1);
+}
+
+/* ----- ----- */
+.section-about {
+  padding: 2rem 0;
+  background: linear-gradient(to right, rgba(40, 20, 62, 0.5), transparent);
+}
+
+.headshot-image img {
+  border-radius: 1000px;
+  object-fit: cover;
+  object-position: center top;
+  position: relative;
+}
+
+.article-about {
+  max-width: 40ch;
+}
+.article-about p {
+  line-height: 1.8;
 }
 
 /*# sourceMappingURL=main.css.map */
