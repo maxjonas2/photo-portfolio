@@ -1,0 +1,7 @@
+images
+*.jpg
+*.jpeg
+.cache
+dist
+node_modules
+server/api_key.json

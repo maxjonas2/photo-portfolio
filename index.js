@@ -10,7 +10,7 @@ const HOSTNAME = "localhost";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const storage = new Storage({
-  keyFilename: "api_key.json"
+  keyFilename: process.env.GOOGLE_APLICATION_CREDENTIALS
 });
 const bucketName = "kieling-portfolio-images";
 const baseUrl = "https://storage.googleapis.com";
@@ -53,5 +53,5 @@ app.get("/images/:category", async (req, res) => {
 const server = http.createServer(app);
 
 server.listen(PORT, HOSTNAME, null, () => {
-  console.log("listening on port " + PORT);
+  console.log(process.env);
 });
