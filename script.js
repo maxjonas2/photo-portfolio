@@ -1,3 +1,8 @@
+import { Storage } from "@google-cloud/storage";
+
+const contentType = "image/jpeg";
+const path = "FOTO1.jpg";
+
 const HEADER_HIDDEN_SCROLL_POINT = 300;
 
 let scrollInterval = setInterval(checkScroll, 1000);

@@ -105,6 +105,11 @@ section:not(.top-section) {
   z-index: 4;
 }
 
+.header-placeholder {
+  height: var(--header-height);
+  background-color: transparent;
+}
+
 header ul {
   gap: 2rem;
   font-weight: 500;
@@ -251,4 +256,57 @@ footer {
   @media (max-width: 600px) {
     display: none;
   }
+}
+
+/* ----- GALLERY MOSAIC ----- */
+
+.gallery-mosaic {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: 300px;
+  justify-content: center;
+  gap: 33.33px;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+}
+
+/* ----- LIGHTBOX ----- */
+
+@mixin fill {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
+.lightbox-overlay {
+  @include fill;
+  @include centered-items;
+
+  background-color: rgba(black, 0.8);
+  display: none;
+}
+
+.lightbox-container {
+  @include centered-items;
+  width: min(80vw, 600px);
+  height: min(60vh, 400px);
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+}
+
+.lightbox-btn {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(white, 0.8);
+  border-radius: 1.5rem;
+  color: black;
+  font-weight: bold;
+  margin: 0 3rem;
+  cursor: pointer;
 }

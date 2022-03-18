@@ -1,1 +1,6 @@
-/images
+images
+*.jpg
+*.jpeg
+.cache
+dist
+node_modules
