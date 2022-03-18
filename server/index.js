@@ -24,11 +24,15 @@ listObjects().catch(console.log);
 
 const app = express();
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("/images/:category", async (req, res) => {
   switch (req.params.category) {
-    case "commercial":
+    case "all":
       const files = await listObjects();
       res.json(
         files.map(item => {

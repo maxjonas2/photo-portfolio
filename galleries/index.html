@@ -13,6 +13,34 @@
     />
     <link rel="stylesheet" href="../css/main.css" />
     <script defer src="../script.js"></script>
+    <style>
+      .gallery-item {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .gallery-item > img {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 1s ease, transform 1s ease;
+        z-index: 2;
+      }
+
+      .gallery-item > img.loader {
+        opacity: 1;
+        height: 50px;
+        width: 50px;
+        position: absolute;
+        z-index: 0;
+      }
+
+      img.shown {
+        opacity: 1;
+        transform: scale(1);
+      }
+    </style>
   </head>
   <body>
     <header class="header-main overlaid">
@@ -40,35 +68,46 @@
   <section>
     <div class="content flow">
       <h2 class="text normal">Content</h2>
-      <div class="gallery-mosaic">
-        <div class="gallery-item">
-          <img src="../images/color/small/color (1).jpg" alt="" />
-        </div>
-        <div class="gallery-item">
-          <img src="../images/color/small/color (2).jpg" alt="" />
-        </div>
-        <div class="gallery-item">
-          <img src="../images/color/small/color (3).jpg" alt="" />
-        </div>
-        <div class="gallery-item">
-          <img src="../images/color/small/color (4).jpg" alt="" />
-        </div>
-        <div class="gallery-item">
-          <img src="../images/color/small/color (5).jpg" alt="" />
-        </div>
-        <div class="gallery-item">
-          <img src="../images/color/small/color (6).jpg" alt="" />
-        </div>
-        <div class="gallery-item">
-          <img src="../images/color/small/color (7).jpg" alt="" />
-        </div>
-        <div class="gallery-item">
-          <img src="../images/color/small/color (8).jpg" alt="" />
-        </div>
-        <div class="gallery-item">
-          <img src="../images/color/small/color (9).jpg" alt="" />
-        </div>
+      <div class="gallery-mosaic" id="gallery-mosaic">
+        <!-- Imaged loaded dynamically via script -->
       </div>
     </div>
+
+    <script>
+      async function fetchLinks() {
+        const response = await fetch("http://localhost:8000/images/all", {
+          method: "get"
+        });
+        return await response.json();
+      }
+
+      fetchLinks().then(data => {
+        imgCount = Array.from(data).length;
+        populateGallery(data);
+      });
+
+      function populateGallery(data) {
+        document.getElementById("gallery-mosaic").append(
+          ...data.map(item => {
+            const container = document.createElement("div");
+            container.classList.add("gallery-item");
+
+            const loader = document.createElement("img");
+            loader.src = "loader.svg";
+            loader.classList.add("loader");
+            container.append(loader);
+
+            const image = document.createElement("img");
+            image.src = item.url;
+            image.addEventListener("loadend", e => {
+              image.classList.add("shown");
+              image.previousElementSibling.remove();
+            });
+            container.append(image);
+            return container;
+          })
+        );
+      }
+    </script>
   </section>
 </html>

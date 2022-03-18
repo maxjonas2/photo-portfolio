@@ -1,9 +1,21 @@
-import { Storage } from "@google-cloud/storage";
-
 const contentType = "image/jpeg";
 const path = "FOTO1.jpg";
 
 const HEADER_HIDDEN_SCROLL_POINT = 300;
+const HERO = document.querySelector(".hero-container");
+
+let scrollMap = 0;
+
+function moveBackground() {
+  HERO ? (HERO.style.backgroundPosition = `center ${scrollMap * 25}px`) : null;
+  document.body.style.backgroundColor = `hsl(250, 0%, ${scrollMap / 2}%)`;
+}
+
+window.onscroll = function () {
+  return;
+  scrollMap = window.scrollY / 50;
+  requestAnimationFrame(moveBackground);
+};
 
 let scrollInterval = setInterval(checkScroll, 1000);
 

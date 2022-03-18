@@ -1,7 +1,7 @@
 @import "basic";
 
 :root {
-  --bg-color: #0a0300;
+  --bg-color: hsl(250, 0%, 0%);
 
   --font-title: "Oswald";
   --font-text: "Raleway";
@@ -73,7 +73,7 @@ nav a {
 }
 
 section:not(.top-section) {
-  padding-top: 2rem;
+  margin-top: 2rem;
 }
 
 .content {
@@ -131,7 +131,7 @@ header ul {
   background-image: url("../images/bw/infectious grooves-8.jpg");
   background-size: cover;
   background-position: center center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   position: relative;
 }
 
@@ -309,4 +309,29 @@ footer {
   font-weight: bold;
   margin: 0 3rem;
   cursor: pointer;
+}
+
+/* ----- FOOTER STYLE ----- */
+
+.section-footer {
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+
+  a {
+    text-decoration: none;
+    color: rgba(white, 0.8);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ul > * + * {
+    margin-top: 0.8rem;
+  }
 }
