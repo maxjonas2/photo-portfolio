@@ -4,3 +4,4 @@ images
 .cache
 dist
 node_modules
+server/api_key.json
