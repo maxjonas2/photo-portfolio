@@ -1,4 +1,28 @@
 let lightboxOpen = false;
+let lbCurrentIndex = 0;
+
+const baseUrl = "https://storage.googleapis.com";
+const bucketBaseName = "kieling-portfolio-images-";
+
+const lightboxOverlay = document.querySelector(".lightbox-overlay");
+const lightboxContainer = document.querySelector(".lightbox-container");
+const nextButton = document.querySelector("#lightbox-btn-next");
+const backButton = document.querySelector("#lightbox-btn-back");
+
+function lightboxToggle(status) {
+  if (status === "closed") {
+    lightboxContainer.innerHTML = "";
+    lightboxOverlay.classList.remove("shown");
+  } else {
+    lightboxOverlay.classList.add("shown");
+  }
+}
+
+document.body.addEventListener("click", e => {
+  if (e.target === lightboxOverlay || e.target === lightboxContainer) {
+    lightboxToggle("closed");
+  }
+});
 
 function getNewElement(type, classList) {
   const element = document.createElement(type);
@@ -7,12 +31,13 @@ function getNewElement(type, classList) {
 }
 
 async function fetchLinks(category) {
-  const response = await fetch(
+  const response = await window.fetch(
     "http://localhost:8000/images/small/" + category,
     {
-      method: "get"
+      method: "GET"
     }
   );
+
   return await response.json();
 }
 
@@ -21,8 +46,22 @@ function getBucketName(id) {
 }
 
 function lightboxChangeImage(direction, container, object, idList) {
-  const index = idList.findIndex(item => item.id === object.id);
-  console.log(index);
+  if (lbCurrentIndex === 0) {
+    lbCurrentIndex = idList.findIndex(item => item === object.id);
+  }
+
+  if (direction === "next") {
+    lbCurrentIndex++;
+  } else {
+    if (lbCurrentIndex !== 0) {
+      lbCurrentIndex--;
+    } else {
+      return false;
+    }
+  }
+
+  lightboxContainer.querySelector("img").src =
+    baseUrl + "/" + getBucketName(object.bucket) + "/" + idList[lbCurrentIndex];
 }
 
 function openLightbox(event) {
@@ -40,32 +79,24 @@ function openLightbox(event) {
 }
 
 function initiateLightbox(object, idList) {
-  const overlay = document.querySelector(".lightbox-overlay");
-  const container = document.querySelector(".lightbox-container");
-  const nextButton = document.querySelector("#lightbox-btn-next");
-  const backButton = document.querySelector("#lightbox-btn-back");
-
   nextButton.onclick = () => {
-    lightboxChangeImage("next", container, object, idList);
+    lightboxChangeImage("next", lightboxContainer, object, idList);
   };
   backButton.onclick = () => {
-    lightboxChangeImage("back", container, object, idList);
+    lightboxChangeImage("back", lightboxContainer, object, idList);
   };
 
-  overlay.classList.add("shown");
+  lightboxOverlay.classList.add("shown");
 
   const image = document.createElement("img");
-  const url =
-    "https://storage.googleapis.com/" +
-    getBucketName(object.bucket) +
-    "/" +
-    object.id;
+  const url = baseUrl + "/" + getBucketName(object.bucket) + "/" + object.id;
 
   image.src = url;
-  container.append(image);
+  lightboxContainer.append(image);
 }
 
 function populateGallery(data) {
+  alert("populate gallery got called!");
   const galleryMosaic = document.getElementById("gallery-mosaic");
   galleryMosaic.innerHTML = "";
   galleryMosaic.append(
@@ -94,7 +125,7 @@ function populateGallery(data) {
 }
 
 function loadGallery(category = "all") {
-  fetchLinks((data = category)).then(data => {
+  fetchLinks(category).then(data => {
     imgCount = Array.from(data).length;
     populateGallery(data);
   });

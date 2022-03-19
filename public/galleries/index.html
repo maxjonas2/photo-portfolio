@@ -17,7 +17,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/main.css" />
-    <script defer src="./script.js"></script>
   </head>
   <body>
     <header class="header-main overlaid">
@@ -33,36 +32,43 @@
         </nav>
       </div>
     </header>
-  </body>
-  <div class="header-placeholder"></div>
-  <div class="lightbox-overlay">
-    <button class="btn lightbox-btn" id="lightbox-btn-back">Back</button>
-    <div class="lightbox-container"></div>
-    <button class="btn lightbox-btn" id="lightbox-btn-next">Next</button>
-  </div>
-  <section>
-    <div class="content flow gallery-mosaic-container">
-      <div class="container-portfolio-picker">
-        <!-- <div class="selector-chip"></div> -->
-        <h2
-          data-value="concerts"
-          class="normal upper picker-category-title selected"
-        >
-          Concertos
-        </h2>
-        <h2 data-value="bw" class="normal upper picker-category-title">
-          Black & White
-        </h2>
-        <h2 data-value="commercial" class="normal upper picker-category-title">
-          Comercial
-        </h2>
-        <h2 data-value="portraits" class="normal upper picker-category-title">
-          Retratos
-        </h2>
-      </div>
-      <div class="gallery-mosaic" id="gallery-mosaic">
-        <!-- Imaged loaded dynamically via script -->
+
+    <div class="header-placeholder"></div>
+    <div class="lightbox-overlay">
+      <div class="lightbox-container"></div>
+      <div class="lightbox-controls">
+        <button class="btn lightbox-btn" id="lightbox-btn-back">Back</button>
+        <button class="btn lightbox-btn" id="lightbox-btn-next">Next</button>
       </div>
     </div>
-  </section>
+    <section>
+      <div class="content flow gallery-mosaic-container">
+        <div class="container-portfolio-picker">
+          <!-- <div class="selector-chip"></div> -->
+          <h2
+            data-value="concerts"
+            class="normal upper picker-category-title selected"
+          >
+            Concertos
+          </h2>
+          <h2 data-value="bw" class="normal upper picker-category-title">
+            Black & White
+          </h2>
+          <h2
+            data-value="commercial"
+            class="normal upper picker-category-title"
+          >
+            Comercial
+          </h2>
+          <h2 data-value="portraits" class="normal upper picker-category-title">
+            Retratos
+          </h2>
+        </div>
+        <div class="gallery-mosaic" id="gallery-mosaic">
+          <!-- Imaged loaded dynamically via script -->
+        </div>
+      </div>
+    </section>
+    <script src="./script.js"></script>
+  </body>
 </html>
