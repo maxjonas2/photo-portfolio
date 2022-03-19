@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Josi's Portfolio</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -38,28 +43,45 @@
     <button class="btn lightbox-btn">Next</button>
   </div>
   <section>
-    <div class="content flow">
-      <h2 class="text normal">Content</h2>
+    <div class="content flow gallery-mosaic-container">
+      <div class="container-portfolio-picker">
+        <!-- <div class="selector-chip"></div> -->
+        <h2
+          data-value="concerts"
+          class="normal upper picker-category-title selected"
+        >
+          Concertos
+        </h2>
+        <h2 data-value="bw" class="normal upper picker-category-title">
+          Black & White
+        </h2>
+        <h2 data-value="commercial" class="normal upper picker-category-title">
+          Comercial
+        </h2>
+        <h2 data-value="portraits" class="normal upper picker-category-title">
+          Retratos
+        </h2>
+      </div>
       <div class="gallery-mosaic" id="gallery-mosaic">
         <!-- Imaged loaded dynamically via script -->
       </div>
     </div>
 
     <script>
-      async function fetchLinks() {
-        const response = await fetch("http://localhost:8000/images/all", {
-          method: "get"
-        });
+      async function fetchLinks(category) {
+        const response = await fetch(
+          "http://localhost:8000/images/small/" + category,
+          {
+            method: "get"
+          }
+        );
         return await response.json();
       }
 
-      fetchLinks().then(data => {
-        imgCount = Array.from(data).length;
-        populateGallery(data);
-      });
-
       function populateGallery(data) {
-        document.getElementById("gallery-mosaic").append(
+        const galleryMosaic = document.getElementById("gallery-mosaic");
+        galleryMosaic.innerHTML = "";
+        galleryMosaic.append(
           ...data.map(item => {
             const container = document.createElement("div");
             container.classList.add("gallery-item");
@@ -80,6 +102,29 @@
           })
         );
       }
+
+      function loadGallery(category = "all") {
+        fetchLinks((data = category)).then(data => {
+          imgCount = Array.from(data).length;
+          populateGallery(data);
+        });
+      }
+
+      loadGallery("concerts");
+    </script>
+    <script>
+      function switchGallery(value) {
+        loadGallery(value);
+      }
+
+      $(() => {
+        const pickerCategories = $(".picker-category-title");
+        pickerCategories.on("click", e => {
+          pickerCategories.removeClass("selected");
+          $(e.target).addClass("selected");
+          switchGallery(e.target.dataset.value);
+        });
+      });
     </script>
   </section>
 </html>

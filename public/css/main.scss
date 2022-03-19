@@ -335,6 +335,38 @@ footer {
 
 /* ----- GALLERY STYLES ----- */
 
+.container-portfolio-picker {
+  position: relative;
+}
+
+.selector-chip {
+  position: absolute;
+  height: 3px;
+  background-color: white;
+  width: 40px;
+  bottom: -3px;
+}
+
+.picker-category-title {
+  display: inline-block;
+  margin-right: 2rem;
+  cursor: pointer;
+  transition: color 0.5s ease;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+  }
+
+  &:not(.selected) {
+    color: rgb(100, 100, 100);
+  }
+}
+
+.gallery-mosaic-container {
+}
+
 .gallery-item {
   position: relative;
   display: flex;
@@ -375,6 +407,7 @@ img.shown {
     object-fit: cover;
     object-position: center top;
     position: relative;
+    filter: saturate(0);
   }
 }
 
@@ -383,5 +416,20 @@ img.shown {
 
   p {
     line-height: 1.8;
+  }
+}
+
+.headshot-image-container {
+  @include centered-items;
+  width: 150px;
+  height: 150px;
+
+  &::before {
+    content: "";
+    width: 156px;
+    height: 156px;
+    background-image: linear-gradient(to right bottom, rebeccapurple, red);
+    position: absolute;
+    border-radius: 1000px;
   }
 }

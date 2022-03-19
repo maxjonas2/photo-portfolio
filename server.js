@@ -1,3 +1,4 @@
+import fs from "fs";
 import http from "http";
 import express from "express";
 import path, { dirname } from "path";
@@ -15,6 +16,14 @@ const storage = new Storage({
 const bucketName = "kieling-portfolio-images";
 const baseUrl = "https://storage.googleapis.com";
 
+const app = express();
+const router = express.Router();
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 async function listObjects() {
   const [files] = await storage.bucket(bucketName).getFiles();
   return files;
@@ -22,19 +31,20 @@ async function listObjects() {
 
 listObjects().catch(console.log);
 
-const app = express();
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  next();
-});
+app.use(router);
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.get("/images/:category", async (req, res) => {
-  switch (req.params.category) {
-    case "all":
+router.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "home.html"));
+});
+
+app.get("/images/small/:category", async (req, res) => {
+  const { category } = req.params;
+  switch (category) {
+    case "concerts": {
+      const bucketName = "kieling-portfolio-images-concerts-small";
       const files = await listObjects();
-      res.json(
+      res.status(200).json(
         files.map(item => {
           return {
             itemName: item.name,
@@ -45,6 +55,23 @@ app.get("/images/:category", async (req, res) => {
           };
         })
       );
+    }
+    case "bw": {
+      const bucketName = "kieling-portfolio-images-bw-small";
+      const files = await listObjects();
+      res.status(200).json(
+        files.map(item => {
+          return {
+            itemName: item.name,
+            url: (baseUrl + "/" + bucketName + "/" + item.name).replace(
+              " ",
+              "%20"
+            )
+          };
+        })
+      );
+    }
+
     default:
       res.end();
   }
