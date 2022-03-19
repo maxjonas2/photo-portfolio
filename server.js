@@ -1,9 +1,14 @@
-import fs from "fs";
 import http from "http";
 import express from "express";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { Storage } from "@google-cloud/storage";
+
+import {
+  generateJSON,
+  setCors,
+  bucketBaseName
+} from "./server_helpers/helpers.js";
 
 const PORT = 8000;
 const HOSTNAME = "localhost";
@@ -13,20 +18,19 @@ const __dirname = dirname(__filename);
 const storage = new Storage({
   keyFilename: process.env.GOOGLE_APLICATION_CREDENTIALS
 });
-const bucketName = "kieling-portfolio-images";
-const baseUrl = "https://storage.googleapis.com";
 
 const app = express();
 const router = express.Router();
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  next();
-});
+setCors(app);
 
-async function listObjects() {
-  const [files] = await storage.bucket(bucketName).getFiles();
+async function listObjects(id) {
+  const [files] = await storage.bucket(bucketBaseName.concat(id)).getFiles();
   return files;
+}
+
+async function getFiles(bucketId) {
+  return await listObjects(bucketId);
 }
 
 listObjects().catch(console.log);
@@ -34,44 +38,19 @@ listObjects().catch(console.log);
 app.use(router);
 app.use(express.static(path.join(__dirname, "/public")));
 
-router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "home.html"));
-});
-
 app.get("/images/small/:category", async (req, res) => {
   const { category } = req.params;
   switch (category) {
     case "concerts": {
-      const bucketName = "kieling-portfolio-images-concerts-small";
-      const files = await listObjects();
-      res.status(200).json(
-        files.map(item => {
-          return {
-            itemName: item.name,
-            url: (baseUrl + "/" + bucketName + "/" + item.name).replace(
-              " ",
-              "%20"
-            )
-          };
-        })
-      );
+      const bucketId = "concerts-small";
+      const files = await getFiles(bucketId);
+      return res.status(200).json(generateJSON(files, bucketId)).end();
     }
     case "bw": {
-      const bucketName = "kieling-portfolio-images-bw-small";
-      const files = await listObjects();
-      res.status(200).json(
-        files.map(item => {
-          return {
-            itemName: item.name,
-            url: (baseUrl + "/" + bucketName + "/" + item.name).replace(
-              " ",
-              "%20"
-            )
-          };
-        })
-      );
+      const bucketId = "bw-small";
+      const files = await getFiles(bucketId);
+      return res.status(200).json(generateJSON(files, bucketId)).end();
     }
-
     default:
       res.end();
   }

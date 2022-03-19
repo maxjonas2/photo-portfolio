@@ -17,7 +17,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/main.css" />
-    <script defer src="../script.js"></script>
+    <script defer src="./script.js"></script>
   </head>
   <body>
     <header class="header-main overlaid">
@@ -36,11 +36,9 @@
   </body>
   <div class="header-placeholder"></div>
   <div class="lightbox-overlay">
-    <button class="btn lightbox-btn">Back</button>
-    <div class="lightbox-container">
-      <p>This be a lightbox</p>
-    </div>
-    <button class="btn lightbox-btn">Next</button>
+    <button class="btn lightbox-btn" id="lightbox-btn-back">Back</button>
+    <div class="lightbox-container"></div>
+    <button class="btn lightbox-btn" id="lightbox-btn-next">Next</button>
   </div>
   <section>
     <div class="content flow gallery-mosaic-container">
@@ -66,65 +64,5 @@
         <!-- Imaged loaded dynamically via script -->
       </div>
     </div>
-
-    <script>
-      async function fetchLinks(category) {
-        const response = await fetch(
-          "http://localhost:8000/images/small/" + category,
-          {
-            method: "get"
-          }
-        );
-        return await response.json();
-      }
-
-      function populateGallery(data) {
-        const galleryMosaic = document.getElementById("gallery-mosaic");
-        galleryMosaic.innerHTML = "";
-        galleryMosaic.append(
-          ...data.map(item => {
-            const container = document.createElement("div");
-            container.classList.add("gallery-item");
-
-            const loader = document.createElement("img");
-            loader.src = "loader.svg";
-            loader.classList.add("loader");
-            container.append(loader);
-
-            const image = document.createElement("img");
-            image.src = item.url;
-            image.addEventListener("loadend", e => {
-              image.classList.add("shown");
-              image.previousElementSibling.remove();
-            });
-            container.append(image);
-            return container;
-          })
-        );
-      }
-
-      function loadGallery(category = "all") {
-        fetchLinks((data = category)).then(data => {
-          imgCount = Array.from(data).length;
-          populateGallery(data);
-        });
-      }
-
-      loadGallery("concerts");
-    </script>
-    <script>
-      function switchGallery(value) {
-        loadGallery(value);
-      }
-
-      $(() => {
-        const pickerCategories = $(".picker-category-title");
-        pickerCategories.on("click", e => {
-          pickerCategories.removeClass("selected");
-          $(e.target).addClass("selected");
-          switchGallery(e.target.dataset.value);
-        });
-      });
-    </script>
   </section>
 </html>

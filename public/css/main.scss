@@ -291,6 +291,10 @@ footer {
   display: none;
 }
 
+.lightbox-overlay.shown {
+  display: flex;
+}
+
 .lightbox-container {
   @include centered-items;
   width: min(80vw, 600px);
@@ -298,6 +302,10 @@ footer {
   background-color: white;
   border-radius: 10px;
   color: black;
+
+  img {
+    border-radius: 10px;
+  }
 }
 
 .lightbox-btn {
@@ -364,14 +372,17 @@ footer {
   }
 }
 
-.gallery-mosaic-container {
-}
-
 .gallery-item {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .gallery-item > img {
