@@ -4,11 +4,7 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { Storage } from "@google-cloud/storage";
 
-import {
-  generateJSON,
-  setCors,
-  bucketBaseName
-} from "./server_helpers/helpers.js";
+import { generateJSON, bucketBaseName } from "./server_helpers/helpers.js";
 
 const PORT = 8000;
 const HOSTNAME = "localhost";
@@ -22,7 +18,11 @@ const storage = new Storage({
 const app = express();
 const router = express.Router();
 
-setCors(app);
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+  console.log("header set");
+  next();
+});
 
 async function listObjects(id) {
   const [files] = await storage.bucket(bucketBaseName.concat(id)).getFiles();

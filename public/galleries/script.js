@@ -96,7 +96,6 @@ function initiateLightbox(object, idList) {
 }
 
 function populateGallery(data) {
-  alert("populate gallery got called!");
   const galleryMosaic = document.getElementById("gallery-mosaic");
   galleryMosaic.innerHTML = "";
   galleryMosaic.append(

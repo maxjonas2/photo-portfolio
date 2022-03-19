@@ -24,5 +24,7 @@ function checkScroll() {
 
 function toggleHeader(shown) {
   const HEADER_REF = document.querySelector(".header-main");
-  HEADER_REF.style.transform = `translateY(${shown ? "0" : "-4"}rem)`;
+  !shown
+    ? HEADER_REF.classList.add("opaque")
+    : HEADER_REF.classList.remove("opaque");
 }

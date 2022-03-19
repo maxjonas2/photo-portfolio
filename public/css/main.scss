@@ -1,17 +1,17 @@
 @import "basic";
 
 :root {
-  --bg-color: hsl(250, 0%, 0%);
+  --bg-color: rgb(26, 26, 26);
 
-  --font-title: "Oswald";
-  --font-text: "Raleway";
+  --font-title: "Oswald", sans-serif;
+  --font-text: "Raleway", sans-serif;
   --header-height: 4rem;
 }
 
 body {
   font-family: "Raleway", sans-serif;
   background-color: var(--bg-color);
-  color: rgb(250, 250, 250);
+  color: rgb(210, 210, 210);
   scroll-behavior: smooth;
 }
 
@@ -37,15 +37,15 @@ h4 {
 }
 
 h3 {
-  font-size: 2;
+  font-size: 1.8;
 }
 
 h2 {
-  font-size: 2.8;
+  font-size: 2.5;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3.2rem;
 }
 
 .text {
@@ -60,15 +60,39 @@ p {
   font-weight: normal;
 }
 
-nav a {
-  color: currentColor;
+a {
   text-decoration: none;
-  font-weight: 600;
+}
+
+nav a,
+.btn-link {
+  font-weight: bold;
   font-family: var(--font-title);
   text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #c8c8c8;
+}
 
-  &:not(.chip):hover {
-    text-decoration: underline;
+nav a:not(.btn-link):hover {
+  color: white;
+}
+
+.svg-link {
+  filter: brightness(0.65);
+  transition: filter 0.2s ease;
+
+  &:hover {
+    filter: brightness(1);
+  }
+}
+
+.btn-link {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgb(200, 200, 200);
+
+  &:hover {
+    background-color: rgb(200, 200, 200);
+    color: var(--bg-color);
   }
 }
 
@@ -79,7 +103,7 @@ section:not(.top-section) {
 .content {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 
 .logo {
@@ -89,7 +113,12 @@ section:not(.top-section) {
 .header-main {
   background-color: rgba(black, 0.75);
   position: fixed;
-  transition: transform 0.3s ease;
+  transition: background-color 0.35s ease;
+}
+
+.header-main.opaque {
+  background-color: var(--bg-color);
+  box-shadow: 0 1px 10px rgba(black, 0.65);
 }
 
 .header-content {
@@ -170,12 +199,17 @@ header ul {
     height: 2.6rem;
     // background-color: rebeccapurple;
     width: 8rem;
-    border: 2px solid white;
-    color: white;
+    border: 2px solid #c8c8c8;
+    color: #ebebeb;
     text-transform: uppercase;
     border-radius: 12px;
     font-weight: bold;
     font-family: var(--font-text);
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+    }
   }
 }
 
@@ -206,6 +240,16 @@ header ul {
 
 .full-col {
   grid-column: span 2;
+}
+
+.splitter.horizontal-items {
+  justify-content: flex-start;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
 }
 
 .chip {
@@ -250,6 +294,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0.9rem;
 }
 
 .galleries {
@@ -313,14 +358,33 @@ footer {
 }
 
 .lightbox-btn {
-  width: 3rem;
-  height: 3rem;
-  background-color: rgba(white, 0.8);
-  border-radius: 1.5rem;
+  --size: 4rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--size);
+  height: var(--size);
+  background-color: rgba(white, 0.25);
   color: black;
   font-weight: bold;
   margin: 0 3rem;
+  border-radius: calc(var(--size) / 2);
   cursor: pointer;
+}
+
+#lightbox-btn-back > img {
+  transform: scaleX(-1);
+}
+
+.btn-lightbox-close {
+  @include centered-items;
+  position: fixed;
+  width: 4rem;
+  height: 4rem;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(white, 0.25);
+  border-radius: 2rem;
 }
 
 /* ----- FOOTER STYLE ----- */
@@ -391,8 +455,8 @@ footer {
 
 .gallery-item > img {
   opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 1s ease, transform 1s ease;
+  transform: scale(0.9);
+  transition: opacity 1.5s ease, transform 1.5s ease;
   z-index: 2;
 }
 
@@ -413,7 +477,7 @@ img.shown {
 
 .section-about {
   padding: 2rem 0;
-  background: linear-gradient(to right, rgba(40, 20, 62, 0.5), transparent);
+  background: linear-gradient(to right, rgba(40, 20, 62, 0.5), var(--bg-color));
 }
 
 .headshot-image {
