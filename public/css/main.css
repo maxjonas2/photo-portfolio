@@ -186,6 +186,27 @@ section:not(.top-section) {
   font-family: var(--font-title);
 }
 
+.hamburger-icon-container {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+@media (max-width: 500px) {
+  .hamburger-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: white;
+}
+
 .header-main {
   background-color: rgba(0, 0, 0, 0.75);
   position: fixed;
@@ -211,6 +232,12 @@ section:not(.top-section) {
   z-index: 4;
 }
 
+@media (max-width: 500px) {
+  .header-main li:not(.nav-permanent) {
+    display: none;
+  }
+}
+
 .header-placeholder {
   height: var(--header-height);
   background-color: transparent;
@@ -219,6 +246,11 @@ section:not(.top-section) {
 header ul {
   gap: 2rem;
   font-weight: 500;
+}
+@media (max-width: 500px) {
+  header ul {
+    gap: 1rem;
+  }
 }
 
 .hero {
@@ -264,6 +296,48 @@ header ul {
 
 .overlay-hero {
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+}
+
+.menu-container {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  opacity: 0;
+}
+.menu-container.shown {
+  opacity: 1;
+}
+.menu-container .menu {
+  --width: 200px;
+  position: absolute;
+  width: var(--width);
+  background-color: var(--bg-color);
+  inset: 0 0 0 auto;
+  padding: 1rem;
+  box-shadow: 0 -1px 10px black;
+  transform: translateX(calc(var(--width) + 10px));
+}
+.menu-container .menu.shown {
+  transform: translateX(0);
+}
+.menu-container .menu h2 {
+  letter-spacing: 3px;
+}
+
+.btn-menu-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+  transform: rotate(45deg);
+  position: relative;
+  bottom: 2px;
+  cursor: pointer;
 }
 
 .hero-cta {
@@ -336,7 +410,6 @@ header ul {
   color: white;
   border-radius: 15px;
   text-decoration: none;
-  text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.4px;
   position: relative;
