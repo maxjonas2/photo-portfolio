@@ -32,7 +32,8 @@ function getNewElement(type, classList) {
 
 async function fetchLinks(category) {
   const response = await window.fetch(
-    "http://localhost:8000/images/small/" + category,
+    "http://https://jkieling.netlify.app/.netlify/functions/getImages?bucket=" +
+      category,
     {
       method: "GET"
     }
