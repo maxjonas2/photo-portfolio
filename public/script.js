@@ -7,7 +7,7 @@ const HERO = document.querySelector(".hero-container");
 let scrollMap = 0;
 
 function moveBackground() {
-  const scrollMap = window.scrollY / 50;
+  const scrollMap = window.scrollY / 45;
   HERO ? (HERO.style.backgroundPosition = `center ${scrollMap * 25}px`) : null;
   // document.body.style.backgroundColor = `hsl(250, 0%, ${scrollMap / 2}%)`;
   requestAnimationFrame(moveBackground);
