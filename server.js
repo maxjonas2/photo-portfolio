@@ -1,6 +1,5 @@
 import http from "http";
 import express from "express";
-import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { Storage } from "@google-cloud/storage";
 
@@ -9,12 +8,7 @@ import { generateJSON, bucketBaseName } from "./server_helpers/helpers.js";
 const PORT = 8000;
 const HOSTNAME = "localhost";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 const storage = new Storage();
-
-const app = express();
-const router = express.Router();
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -33,7 +27,6 @@ async function getFiles(bucketId) {
 }
 
 app.use(router);
-app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("/images/small/:bucket", async (req, res) => {
   const { bucket } = req.params;
