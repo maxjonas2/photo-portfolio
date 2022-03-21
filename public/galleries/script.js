@@ -38,7 +38,8 @@ async function fetchLinks(category) {
     }
   );
 
-  return await response.json();
+  const json = await response.json();
+  return json;
 }
 
 function getBucketName(id) {
@@ -98,8 +99,9 @@ function initiateLightbox(object, idList) {
 function populateGallery(data) {
   const galleryMosaic = document.getElementById("gallery-mosaic");
   galleryMosaic.innerHTML = "";
+  const isWebkit = navigator.userAgent.indexOf("AppleWebKit") !== -1;
   galleryMosaic.append(
-    ...data.map(item => {
+    ...data.map((item, index) => {
       const container = document.createElement("div");
       container.classList.add("gallery-item");
       container.setAttribute("data-id", item.name);
@@ -113,9 +115,11 @@ function populateGallery(data) {
 
       const image = document.createElement("img");
       image.src = item.url;
-      image.addEventListener("loadend", e => {
-        image.classList.add("shown");
-        image.previousElementSibling.remove();
+      image.addEventListener(isWebkit ? "load" : "loadend", () => {
+        setTimeout(() => {
+          image.classList.add("shown");
+          image.previousElementSibling.remove();
+        }, 100);
       });
       container.append(image);
       return container;

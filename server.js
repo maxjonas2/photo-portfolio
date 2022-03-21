@@ -11,15 +11,14 @@ const HOSTNAME = "localhost";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const storage = new Storage({
-  keyFilename: process.env.GOOGLE_APLICATION_CREDENTIALS
-});
+const storage = new Storage();
 
 const app = express();
 const router = express.Router();
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-type");
   console.log("header set");
   next();
 });
@@ -33,14 +32,12 @@ async function getFiles(bucketId) {
   return await listObjects(bucketId);
 }
 
-listObjects().catch(console.log);
-
 app.use(router);
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.get("/images/small/:category", async (req, res) => {
-  const { category } = req.params;
-  switch (category) {
+app.get("/images/small/:bucket", async (req, res) => {
+  const { bucket } = req.params;
+  switch (bucket) {
     case "concerts": {
       const bucketId = "concerts-small";
       const files = await getFiles(bucketId);

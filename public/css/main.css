@@ -274,8 +274,8 @@ header ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2.6rem;
-  width: 8rem;
+  height: 3rem;
+  width: 10rem;
   border: 2px solid #c8c8c8;
   color: #ebebeb;
   text-transform: uppercase;
@@ -379,7 +379,7 @@ footer {
 /* ----- GALLERY MOSAIC ----- */
 .gallery-mosaic {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-auto-rows: 300px;
   justify-content: center;
   gap: 33.33px;
@@ -538,7 +538,7 @@ img.shown {
 /* ----- ----- */
 .section-about {
   padding: 2rem 0;
-  background: linear-gradient(to right, rgba(40, 20, 62, 0.5), var(--bg-color));
+  background: linear-gradient(to right, #323232, transparent);
 }
 
 .headshot-image img {
@@ -567,7 +567,8 @@ img.shown {
   content: "";
   width: 156px;
   height: 156px;
-  background-image: linear-gradient(to right bottom, rebeccapurple, red);
+  background-image: linear-gradient(to right bottom, #919191, #919191);
+  filter: saturate(0);
   position: absolute;
   border-radius: 1000px;
 }
