@@ -6,6 +6,7 @@ const HERO = document.querySelector(".hero-container");
 
 const menu = document.getElementById("menu");
 const menuContainer = document.getElementById("menu-container");
+const isSmallScreen = window.matchMedia("(max-width: 500px)").matches;
 
 function openMenu() {
   menu.parentElement.style.display = "block";
@@ -49,3 +50,35 @@ function toggleHeader(shown) {
     ? HEADER_REF.classList.add("opaque")
     : HEADER_REF.classList.remove("opaque");
 }
+
+const slideIntoViewObserver = new IntersectionObserver(slideIntoViewCallback, {
+  threshold: isSmallScreen ? 0.4 : 0.6
+});
+
+function slideIntoViewCallback(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("in-view");
+    }
+  });
+}
+
+Array.from(document.getElementsByClassName("slide-on-view")).forEach(child => {
+  child.style.transitionDelay = "100ms";
+  child.classList.add("slide-on-view");
+  slideIntoViewObserver.observe(child);
+});
+
+Array.from(document.getElementsByClassName("children-slide")).forEach(
+  container => {
+    Array.from(container.children).forEach((child, index) => {
+      child.style.transitionDelay =
+        (
+          (isSmallScreen ? 0 : 100) +
+          100 * index * (isSmallScreen ? 1 : 2.5)
+        ).toString() + "ms";
+      child.classList.add("slide-on-view");
+      slideIntoViewObserver.observe(child);
+    });
+  }
+);

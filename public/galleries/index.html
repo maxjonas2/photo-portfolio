@@ -10,6 +10,7 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
+    <script defer src="./script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,8 +25,10 @@
         <div class="logo">jKieling</div>
         <nav>
           <ul class="horizontal-items">
-            <li><a href="/public">Home</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="http://jkieling.netlify.app">Home</a></li>
+            <li>
+              <a href="http://jkieling.netlify.app#section-about">About</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -50,24 +53,23 @@
       <div class="content flow gallery-mosaic-container">
         <div class="container-portfolio-picker">
           <!-- <div class="selector-chip"></div> -->
-          <h2
+          <h4
             data-value="concerts"
             class="normal upper picker-category-title selected"
           >
             Color
-          </h2>
-          <h2 data-value="bw" class="normal upper picker-category-title">
+          </h4>
+          <h4 data-value="bw" class="normal upper picker-category-title">
             Black & White
-          </h2>
-          <h2 data-value="portraits" class="normal upper picker-category-title">
+          </h4>
+          <h4 data-value="portraits" class="normal upper picker-category-title">
             Portraits
-          </h2>
+          </h4>
         </div>
         <div class="gallery-mosaic" id="gallery-mosaic">
           <!-- Imaged loaded dynamically via script -->
         </div>
       </div>
     </section>
-    <script src="./script.js"></script>
   </body>
 </html>

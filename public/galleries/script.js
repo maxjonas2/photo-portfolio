@@ -1,8 +1,13 @@
 let lightboxOpen = false;
 let lbCurrentIndex = 0;
 
+const PORT = "8888";
+// const origin = window.location.origin.replace(/\:\d{4}/, `:${PORT}`);
+const origin = "http://jkieling.netlify.app";
+
 const baseUrl = "https://storage.googleapis.com";
 const bucketBaseName = "kieling-portfolio-images-";
+const isSmallScreen = window.innerWidth < 500;
 
 const lightboxOverlay = document.querySelector(".lightbox-overlay");
 const lightboxContainer = document.querySelector(".lightbox-container");
@@ -32,8 +37,7 @@ function getNewElement(type, classList) {
 
 async function fetchLinks(category) {
   const response = await window.fetch(
-    "https://jkieling.netlify.app/.netlify/functions/getImages?bucket=" +
-      category,
+    `${origin}/.netlify/functions/getImages?bucket=${category}`,
     {
       method: "GET"
     }
@@ -116,6 +120,7 @@ function populateGallery(data) {
 
       const image = document.createElement("img");
       image.src = item.url;
+      image.classList.add("fade-on-view");
       image.addEventListener(isWebkit ? "load" : "loadend", () => {
         setTimeout(() => {
           image.classList.add("shown");
@@ -126,6 +131,37 @@ function populateGallery(data) {
       return container;
     })
   );
+  callObserve();
+}
+
+function callObserve() {
+  setTimeout(() => {
+    document.querySelectorAll(".fade-on-view").forEach(element => {
+      console.log("observer function called");
+      fadeOnViewObserver.observe(element);
+    });
+  }, 1500);
+}
+
+const fadeOnViewObserver = new IntersectionObserver(fadeOnViewCallback, {
+  threshold: 0,
+  rootMargin: "-10% 0% -10% 0%"
+});
+
+function fadeOnViewCallback(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = 1;
+      if (isSmallScreen) {
+        // entry.target.style.transform = "scale(1)";
+      }
+    } else {
+      entry.target.style.opacity = 0.1;
+      if (isSmallScreen) {
+        // entry.target.style.transform = "scale(.9)";
+      }
+    }
+  });
 }
 
 function loadGallery(category = "all") {

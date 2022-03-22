@@ -79,7 +79,8 @@ strong {
 }
 
 :root {
-  --bg-color: rgb(26, 26, 26);
+  --bg-color: rgb(20, 20, 20);
+  --header-background: rgb(50, 50, 50);
   --font-title: "Oswald", sans-serif;
   --font-text: "Raleway", sans-serif;
   --header-height: 4rem;
@@ -214,7 +215,7 @@ section:not(.top-section) {
 }
 
 .header-main.opaque {
-  background-color: var(--bg-color);
+  background-color: var(--header-background);
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.65);
 }
 
@@ -455,7 +456,7 @@ footer {
 /* ----- GALLERY MOSAIC ----- */
 .gallery-mosaic {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-auto-rows: 300px;
   justify-content: center;
   gap: 33.33px;
@@ -566,7 +567,7 @@ footer ul > * + * {
 
 .picker-category-title {
   display: inline-block;
-  margin-right: 2rem;
+  margin-right: 1rem;
   cursor: pointer;
   transition: color 0.5s ease;
 }
@@ -594,7 +595,7 @@ footer ul > * + * {
 .gallery-item > img {
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 1.5s ease, transform 1.5s ease;
+  transition: opacity 1s ease, transform 1s ease;
   z-index: 2;
 }
 
@@ -614,7 +615,7 @@ img.shown {
 /* ----- ----- */
 .section-about {
   padding: 2rem 0;
-  background: linear-gradient(to right, #323232, transparent);
+  background: linear-gradient(to right, rgba(50, 50, 50, 0.68) 40%, transparent 90%);
 }
 
 .headshot-image img {
@@ -647,12 +648,23 @@ img.shown {
 }
 .headshot-image-container::before {
   content: "";
-  width: 156px;
-  height: 156px;
+  width: 154px;
+  height: 154px;
   background-image: linear-gradient(to right bottom, #919191, #919191);
   filter: saturate(0);
   position: absolute;
   border-radius: 1000px;
+}
+
+.slide-on-view {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.5s ease;
+}
+
+.slide-on-view.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /*# sourceMappingURL=main.css.map */
