@@ -34,7 +34,6 @@ function getResponse(body, statusCode = 200) {
   body = typeof body === "string" ? body : JSON.stringify(body);
   return {
     statusCode,
-    headers: { "Access-Control-Allow-Origin": "*" },
     body
   };
 }
