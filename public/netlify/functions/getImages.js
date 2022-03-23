@@ -3,7 +3,9 @@ const { Storage } = require("@google-cloud/storage");
 
 const baseUrl = "https://storage.googleapis.com";
 const bucketBaseName = "kieling-portfolio-images-";
-const storage = new Storage();
+const storage = new Storage({
+  projectId: "photo-portolio "
+});
 
 function generateJSON(files, bucketId) {
   return files.map(item => {
@@ -49,6 +51,11 @@ const handler = async event => {
       }
       case "bw": {
         const bucketId = "bw-small";
+        const files = await getFiles(bucketId);
+        return getResponse(generateJSON(files, bucketId));
+      }
+      case "portrait": {
+        const bucketId = "portrait-small";
         const files = await getFiles(bucketId);
         return getResponse(generateJSON(files, bucketId));
       }

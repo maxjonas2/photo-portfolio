@@ -1,5 +1,6 @@
 let lightboxOpen = false;
 let lbCurrentIndex = 0;
+let imageCount = 0;
 
 const PORT = "8888";
 // const origin = window.location.origin.replace(/\:\d{4}/, `:${PORT}`);
@@ -11,6 +12,7 @@ const isSmallScreen = window.innerWidth < 500;
 
 const lightboxOverlay = document.querySelector(".lightbox-overlay");
 const lightboxContainer = document.querySelector(".lightbox-container");
+const lightboxCloseButton = document.querySelector(".btn-lightbox-close");
 const nextButton = document.querySelector("#lightbox-btn-next");
 const backButton = document.querySelector("#lightbox-btn-back");
 
@@ -24,7 +26,12 @@ function lightboxToggle(status) {
 }
 
 document.body.addEventListener("click", e => {
-  if (e.target === lightboxOverlay || e.target === lightboxContainer) {
+  console.log(e.target);
+  if (
+    e.target === lightboxOverlay ||
+    e.target === lightboxContainer ||
+    e.target === lightboxCloseButton
+  ) {
     lightboxToggle("closed");
   }
 });
@@ -47,13 +54,17 @@ async function fetchLinks(category) {
   return json;
 }
 
-function getBucketName(id) {
-  return "kieling-portfolio-images-" + id.replace(" ", "%20") + "-small";
+function getBucketName(id, size = "large") {
+  return "kieling-portfolio-images-" + id.replace(" ", "%20") + `-${size}`;
 }
 
 function lightboxChangeImage(direction, container, object, idList) {
   if (lbCurrentIndex === 0) {
     lbCurrentIndex = idList.findIndex(item => item === object.id);
+  }
+
+  if (direction === "next" && lbCurrentIndex === imageCount - 1) {
+    return console.log("end of list");
   }
 
   if (direction === "next") {
@@ -98,6 +109,10 @@ function initiateLightbox(object, idList) {
   const url = baseUrl + "/" + getBucketName(object.bucket) + "/" + object.id;
 
   image.src = url;
+  image.style.visibility = "hidden";
+  image.onload = function () {
+    image.style.visibility = "visible";
+  };
   lightboxContainer.append(image);
 }
 
@@ -145,7 +160,7 @@ function callObserve() {
 
 const fadeOnViewObserver = new IntersectionObserver(fadeOnViewCallback, {
   threshold: 0,
-  rootMargin: "-10% 0% -10% 0%"
+  rootMargin: "-35% 0% -35% 0%"
 });
 
 function fadeOnViewCallback(entries) {
@@ -166,7 +181,7 @@ function fadeOnViewCallback(entries) {
 
 function loadGallery(category = "all") {
   fetchLinks(category).then(data => {
-    imgCount = Array.from(data).length;
+    imageCount = data.length;
     populateGallery(data);
   });
 }
@@ -176,8 +191,9 @@ function switchGallery(value) {
 }
 
 $(() => {
-  const pickerCategories = $(".picker-category-title");
+  const pickerCategories = $(".category-picker");
   pickerCategories.on("click", e => {
+    lbCurrentIndex = 0;
     pickerCategories.removeClass("selected");
     $(e.target).addClass("selected");
     switchGallery(e.target.dataset.value);

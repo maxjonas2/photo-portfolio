@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -25,8 +25,10 @@
         <div class="logo">jKieling</div>
         <nav>
           <ul class="horizontal-items">
-            <li><a href="http://jkieling.netlify.app">Home</a></li>
-            <li>
+            <li class="nav-permanent">
+              <a href="http://jkieling.netlify.app">Home</a>
+            </li>
+            <li class="nav-permanent">
               <a href="http://jkieling.netlify.app#section-about">About</a>
             </li>
           </ul>
@@ -36,8 +38,11 @@
 
     <div class="header-placeholder"></div>
     <div class="lightbox-overlay">
-      <button class="btn btn-lightbox-close" id="btn-lightbox-close">
-        Close
+      <button
+        class="btn btn-lightbox-close centered-items"
+        id="btn-lightbox-close"
+      >
+        <img src="./close.svg" alt="" />
       </button>
       <div class="lightbox-container"></div>
       <div class="lightbox-controls">
@@ -53,18 +58,18 @@
       <div class="content flow gallery-mosaic-container">
         <div class="container-portfolio-picker">
           <!-- <div class="selector-chip"></div> -->
-          <h4
+          <a
             data-value="concerts"
-            class="normal upper picker-category-title selected"
+            class="normal upper category-picker selected"
           >
             Color
-          </h4>
-          <h4 data-value="bw" class="normal upper picker-category-title">
+          </a>
+          <a data-value="bw" class="normal upper category-picker">
             Black & White
-          </h4>
-          <h4 data-value="portraits" class="normal upper picker-category-title">
+          </a>
+          <a data-value="portrait" class="normal upper category-picker">
             Portraits
-          </h4>
+          </a>
         </div>
         <div class="gallery-mosaic" id="gallery-mosaic">
           <!-- Imaged loaded dynamically via script -->

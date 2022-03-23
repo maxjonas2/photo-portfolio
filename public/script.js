@@ -52,7 +52,7 @@ function toggleHeader(shown) {
 }
 
 const slideIntoViewObserver = new IntersectionObserver(slideIntoViewCallback, {
-  threshold: isSmallScreen ? 0.4 : 0.6
+  threshold: 0.2
 });
 
 function slideIntoViewCallback(entries) {

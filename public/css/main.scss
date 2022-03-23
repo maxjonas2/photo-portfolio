@@ -1,5 +1,8 @@
 @import "basic";
 
+$breakpoint-medium: 800px;
+$breakpoint-small: 550px;
+
 :root {
   --bg-color: rgb(20, 20, 20);
   --header-background: rgb(50, 50, 50);
@@ -93,8 +96,8 @@ nav a:not(.btn-link):hover {
   transition: background-color 0.1s ease, color 0.1s ease;
 
   &:hover {
-    background-color: rgb(200, 200, 200);
-    color: var(--bg-color);
+    background-color: rgb(220, 220, 220);
+    color: black;
   }
 }
 
@@ -103,7 +106,7 @@ section:not(.top-section) {
 }
 
 .content {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -118,7 +121,7 @@ section:not(.top-section) {
   gap: 6px;
   cursor: pointer;
 
-  @media (max-width: 500px) {
+  @media (max-width: $breakpoint-small) {
     @include centered-items;
   }
 }
@@ -156,7 +159,7 @@ section:not(.top-section) {
 }
 
 .header-main li:not(.nav-permanent) {
-  @media (max-width: 500px) {
+  @media (max-width: $breakpoint-small) {
     display: none;
   }
 }
@@ -170,7 +173,7 @@ header ul {
   gap: 2rem;
   font-weight: 500;
 
-  @media (max-width: 500px) {
+  @media (max-width: $breakpoint-small) {
     gap: 1rem;
   }
 }
@@ -319,7 +322,7 @@ header ul {
 .splitter.horizontal-items {
   justify-content: flex-start;
 
-  @media (max-width: 500px) {
+  @media (max-width: $breakpoint-small) {
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
@@ -370,12 +373,6 @@ footer {
   font-size: 0.9rem;
 }
 
-.galleries {
-  @media (max-width: 600px) {
-    display: none;
-  }
-}
-
 /* ----- GALLERY MOSAIC ----- */
 
 .gallery-mosaic {
@@ -400,7 +397,7 @@ footer {
   @include centered-items;
 
   flex-direction: column;
-  background-color: rgba(black, 0.9);
+  background-color: rgba(black, 0.85);
   display: none;
 }
 
@@ -410,17 +407,15 @@ footer {
 
 .lightbox-container {
   @include centered-items;
-  width: max(80vw, 900px);
-  height: max(60vh, 600px);
-  background-color: transparent;
-  border-radius: 10px;
+  margin-bottom: 2rem;
   color: black;
 
   img {
-    border-radius: 20px;
-    width: 800px;
-    min-width: 360px;
-    max-width: 100vw;
+    border-radius: 2px;
+    height: 80vh;
+    box-shadow: 0 0 10px rgba(black, 0.4);
+    // width: 60vw;
+    // max-width: 100vw;
   }
 }
 
@@ -452,6 +447,11 @@ footer {
   right: 1rem;
   background-color: rgba(white, 0.25);
   border-radius: 2rem;
+  cursor: pointer;
+
+  > img {
+    pointer-events: none;
+  }
 }
 
 /* ----- FOOTER STYLE ----- */
@@ -490,20 +490,23 @@ footer {
   bottom: -3px;
 }
 
-.picker-category-title {
+.category-picker {
   display: inline-block;
   margin-right: 1rem;
   cursor: pointer;
   transition: color 0.5s ease;
+  color: rgb(100, 100, 100);
+  font-size: 1.1rem;
 
   &:hover {
     text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 8px;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
   }
 
-  &:not(.selected) {
-    color: rgb(100, 100, 100);
+  &.selected {
+    color: white;
+    font-weight: 500;
   }
 }
 
@@ -513,7 +516,7 @@ footer {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, filter 0.25s ease;
 
   &:hover {
     transform: scale(1.05);
@@ -569,7 +572,7 @@ img.shown {
     column-rule: 1px solid rgba(white, 0.2);
     text-align: justify;
 
-    @media (max-width: 800px) {
+    @media (max-width: $breakpoint-medium) {
       column-count: 1;
     }
   }
