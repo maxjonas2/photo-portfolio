@@ -1,26 +1,26 @@
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue } from "firebase/database";
+// import { initializeApp } from "firebase/app";
+// import { getDatabase, ref, onValue } from "firebase/database";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCqJ0CZmuAYkau-pZg66zfUWswXgVmr0sA",
-  authDomain: "photo-portolio.firebaseapp.com",
-  databaseURL: "https://photo-portolio-default-rtdb.firebaseio.com",
-  projectId: "photo-portolio",
-  storageBucket: "photo-portolio.appspot.com",
-  messagingSenderId: "233123194430",
-  appId: "1:233123194430:web:b4932f559227dc5572536f"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCqJ0CZmuAYkau-pZg66zfUWswXgVmr0sA",
+//   authDomain: "photo-portolio.firebaseapp.com",
+//   databaseURL: "https://photo-portolio-default-rtdb.firebaseio.com",
+//   projectId: "photo-portolio",
+//   storageBucket: "photo-portolio.appspot.com",
+//   messagingSenderId: "233123194430",
+//   appId: "1:233123194430:web:b4932f559227dc5572536f"
+// };
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+// const app = initializeApp(firebaseConfig);
+// const db = getDatabase(app);
 
-const dbTextRef = ref(db, "homepage/text/section1");
-onValue(dbTextRef, snapshot => {
-  const par = document.querySelector(".aside-info > p");
-  if (par) {
-    console.log(snapshot.val());
-  }
-});
+// const dbTextRef = ref(db, "homepage/text/section1");
+// onValue(dbTextRef, snapshot => {
+//   const par = document.querySelector(".aside-info > p");
+//   if (par) {
+//     console.log(snapshot.val());
+//   }
+// });
 
 const contentType = "image/jpeg";
 const path = "FOTO1.jpg";

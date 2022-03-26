@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="creator" content="Max Jonas"/>
-    <meta name="description" content="Josi Kieling's official website"/>
+    <meta name="creator" content="Max Jonas" />
+    <meta name="description" content="Josi Kieling's official website" />
     <title>Josi Kieling</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,7 +19,8 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-    <script defer src="./dist/bundle.js"></script>
+    <!-- <script defer src="./dist/bundle.js"></script> -->
+    <script defer src="./index.js"></script>
   </head>
   <body>
     <header class="header-main overlaid">
@@ -27,19 +28,28 @@
         <div class="logo">jKieling</div>
         <nav>
           <ul class="horizontal-items">
-            <li class="nav-permanent"><a class="btn btn-link btn-portfolio" href="./galleries">Portfolio</a></li>
+            <li class="nav-permanent">
+              <a class="btn btn-link btn-portfolio" href="./galleries"
+                >Portfolio</a
+              >
+            </li>
             <li><a class="chip" href="#section-about">About</a></li>
             <li><a class="chip" href="#section-about">Contact</a></li>
             <li>
               <a href="https://www.instagram.com/j.kieling">
-                <img width="28" class="svg-link" src="./website_assets/instagram-logo.svg" alt="">
+                <img
+                  width="28"
+                  class="svg-link"
+                  src="./website_assets/instagram-logo.svg"
+                  alt=""
+                />
               </a>
             </li>
             <li class="nav-permanent">
               <button class="btn hamburger-icon-container" id="btn-hamburger">
-                  <span class="hamburger-line"></span>
-                  <span class="hamburger-line"></span>
-                  <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
               </button>
             </li>
           </ul>
@@ -51,25 +61,34 @@
         <ul class="flow">
           <div class="title-container horizontal-items">
             <h2 class="upper">Menu</h2>
-            <button onclick="closeMenu()" class="btn btn-menu-close"><span>+</span></button>
+            <button class="btn btn-menu-close"><span>+</span></button>
           </div>
           <li><a class="chip" href="#section-about">About</a></li>
-            <li><a class="chip" href="#section-about">Contact</a></li>
-            <li>
-              <a href="https://www.instagram.com/j.kieling">
-                <img width="28" class="svg-link" src="./website_assets/instagram-logo.svg" alt="">
-              </a>
-            </li>
+          <li><a class="chip" href="#section-about">Contact</a></li>
+          <li>
+            <a href="https://www.instagram.com/j.kieling">
+              <img
+                width="28"
+                class="svg-link"
+                src="./website_assets/instagram-logo.svg"
+                alt=""
+              />
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
-    <section class="hero-container top-section">
+    <section class="hero-container section-hero">
       <div class="overlay overlay-hero"></div>
       <div class="hero content overlaid">
-        <div class="hero-message">
-          <h2 class="upper slide-on-view">Hello!</h3>
-          <h1 class="upper text slide-on-view">I'm Josi Kieling</h1>
-          <h2 class="normal slide-on-view">Lorem ipsum <span class="faded shadow">dolor.</span></h2>
+        <div class="hero-message flow-small">
+          <h3 class="upper slide-on-view hero-message-hello">Hello!</h3>
+          <h1 class="upper text slide-on-view hero-message-title">
+            <span class="shadow">I'm Josi Kieling</span>
+          </h1>
+          <h3 class="normal slide-on-view font-light hero-message-subtitle">
+            Photographer and <span class="faded shadow">rock lover</span>
+          </h3>
         </div>
         <div class="hero-cta overlaid">
           <div class="horizontal-items gap-small">
@@ -82,86 +101,115 @@
     <section id="section-first">
       <div class="content flow">
         <div class="splitter horizontal-items">
-          <div class="aside-info children-slide">
-            <h3>Welcome</h3>
-            <p>My mission is to capture and share the best in the genre: that amazing feeling from those who live and breathe rock music, and go wild when they hear their favorite guitar riff. I hope that each photo works as an invitation, to bring this feeling as you look at them.</p>
-          </div>
-          <div class="galleries">
+          <article class="article-welcome shadowed-card children-slide">
+            <h3 class="article-title">Welcome</h3>
+            <p>
+              My mission is to capture and share the best in the genre: that
+              amazing feeling from those who live and breathe rock music, and go
+              wild when they hear their favorite guitar riff. I hope that each
+              photo works as an invitation, to bring this feeling as you look at
+              them.
+            </p>
+          </article>
+          <article class="article-galleries shadowed-card children-slide hide-breakpoint-medium">
+            <h3 class="article-title">Section title</h3>
             <nav class="link-list">
-              <!-- <ul class="horizontal-items centered" style="gap: 4rem">
+              <ul class="horizontal-items centered" style="gap: 4rem">
                 <li><a class="chip" href="galleries" href="">Autoral</a></li>
-                <li><a class="chip" href="">Comercial</a></li>
-                <li><a class="chip" href="">Retratos</a></li>
+
                 <li><a class="chip" href="">Outros</a></li>
-              </ul> -->
+              </ul>
             </nav>
+          </article>
+        </div>
+        </div>  
+      </section>
+        <section class="section-second">
+          <div class="content flow">
+            <article class="article-work shadowed-card">
+              <!-- <h3 class="article-title slide-on-view">Photos</h3> -->
+              <div class="mosaic children-slide">
+                <img
+                  class="object-fit-right"
+                  src="./website_assets/photos/_JLK1.jpg"
+                  alt=""
+                />
+                <img
+                  src="./website_assets/photos/_JLK11.jpg"
+                  class="full-row object-fit-right"
+                  alt=""
+                />
+                <img
+                  src="./website_assets/photos/_JLK6.jpg"
+                  class="full-col"
+                  alt=""
+                />
+                <img src="./website_assets/photos/_JLK8.jpg" alt="" />
+                <img src="./website_assets/photos/_JLK30.jpg" alt="" />
+                <img src="./website_assets/photos/JLK_-1-83.jpg" alt="" />
+              </div>
+            </article>
+            <div>
+              <a class="btn btn-link" href="galleries">See more</a>
+            </div>
           </div>
-        </div>
-        <div class="mosaic children-slide">
-          <img src="./website_assets/photos/_JLK1.jpg" alt="">
-          <img src="./website_assets/photos/_JLK11.jpg"  class="full-row" alt="">
-          <img src="./website_assets/photos/_JLK6.jpg" class="full-col" alt="">
-          <img src="./website_assets/photos/_JLK8.jpg" alt="">
-          <img src="./website_assets/photos/_JLK30.jpg" alt="">
-          <img src="./website_assets/photos/JLK_-1-83.jpg" alt="">
-        </div>
-        <div>
-          <a class="btn btn-link" href="galleries">See more</a>
-        </div>
-      </div>
+        </section>
+        
+
 
       <section class="section-about" id="section-about">
         <div class="content">
           <div class="splitter horizontal-items start double-gap">
             <div class="container headshot-image">
               <div class="headshot-image-container">
-                <img width="150" height="150" src="./website_assets/josi2.jpeg" alt="">
+                <img
+                  width="150"
+                  height="150"
+                  src="./website_assets/josi2.jpeg"
+                  alt=""
+                />
               </div>
             </div>
-            <article class="article-about" >
-              <h3>About me</h3>
-              <p>Hello! I’m Josi Kieling, photographer, but first of all, a huge rock fan! What I seek with my photography is to expand the transcendental experience lived in a live show. Both my passions – photography and music – are intertwined, and they reach their peak when I have the possibility to be in a rock concert, feeling the energy from both the audience and the artist, while I’m also part of the equation, capturing the magic as they become one. </p>
+            <article class="article-about">
+              <h3 class="article-title">About me</h3>
+              <p>
+                Hello! I’m Josi Kieling, photographer, but first of all, a huge
+                rock fan! What I seek with my photography is to expand the
+                transcendental experience lived in a live show. Both my passions
+                – photography and music – are intertwined, and they reach their
+                peak when I have the possibility to be in a rock concert,
+                feeling the energy from both the audience and the artist, while
+                I’m also part of the equation, capturing the magic as they
+                become one.
+              </p>
               <!-- With this burning passion, my mission is to capture and share the best in the genre: that amazing feeling from those who live and breathe rock music, and go wild when they hear their favorite guitar riff. I hope that each photo works as an invitation, to bring this feeling as you look at them. -->
             </article>
           </div>
         </div>
       </section>
-      
     </section>
-    <section id="section-contact">
-      <div class="content">
-        <!-- <p>Contact area</p> -->
-      </div>
-    </section>
+
     <section class="section-footer">
       <div class="content">
         <footer>
-          <ul>
-            <h4 class=""><strong>About</strong></h4>
-            <li><a href="">Lorem</a></li>
-            <li><a href="">Ipsum</a></li>
-          </ul>
-          <ul>
-            <h4 class=""><strong>Contact</strong></h4>
-            <li><a href="">Something</a></li>
-            <li><a href="">Else</a></li>
+          <a href="">About</a>
+          <a href="">Contact</a>
 
-          </ul>
-          <ul>
-            <h4 class=""><strong>Social</strong></h4>
-            <li><a href="http://www.instagram.com/j.kieling">
-              <img width="28" class="svg-link" src="./website_assets/instagram-logo.svg" alt="">
-            </a></li>
-            <!-- <li><a href="">
+          <a href="http://www.instagram.com/j.kieling">
+            <img
+              width="28"
+              class="svg-link"
+              src="./website_assets/instagram-logo.svg"
+              alt=""
+            />
+          </a>
+
+          <!-- <li><a href="">
               <img width="28" class="svg-link" src="./website_assets/behance-logo.svg" alt="">
             </a></li> -->
-          </ul>
         </footer>
       </div>
     </section>
-    <script>
-      
-    </script>
-    
+    <script></script>
   </body>
 </html>

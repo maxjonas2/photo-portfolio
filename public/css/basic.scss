@@ -34,8 +34,20 @@
   color: currentColor;
 }
 
+.font-light {
+  font-weight: lighter !important;
+}
+
+.no-letter-spacing {
+  letter-spacing: 0px !important;
+}
+
 .flow > * + * {
   margin-top: calc(var(--default-space) * 2) !important;
+}
+
+.flow-small > * + * {
+  margin-top: calc(var(--default-space) * 0.5) !important;
 }
 
 .centered-items {
@@ -44,8 +56,6 @@
 
 p {
   // letter-spacing: 0.2px;
-  line-height: 1.4;
-
   &.center {
     text-align: center;
   }
@@ -95,4 +105,12 @@ strong {
 
 .horizontal-items.double-gap {
   gap: 4rem;
+}
+
+.object-fit-left {
+  object-position: center left;
+}
+
+.object-fit-right {
+  object-position: center right;
 }
