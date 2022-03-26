@@ -29,8 +29,15 @@ const HEADER_HIDDEN_SCROLL_POINT = 300;
 const HERO = document.querySelector(".hero-container");
 
 const menu = document.getElementById("menu");
+const btnHamburger = document.getElementById("btn-hamburger");
 const menuContainer = document.getElementById("menu-container");
 const isSmallScreen = window.matchMedia("(max-width: 500px)").matches;
+
+if (btnHamburger) {
+  btnHamburger.addEventListener("click", () => {
+    openMenu();
+  });
+}
 
 function openMenu() {
   menu.parentElement.style.display = "block";
