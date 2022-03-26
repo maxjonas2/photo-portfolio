@@ -488,7 +488,7 @@ footer {
 }
 .lightbox-container img {
   border-radius: 2px;
-  height: 80vh;
+  max-height: 80vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
@@ -583,7 +583,6 @@ footer ul > * + * {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.25s ease, filter 0.25s ease;
 }
 .gallery-item:hover {
   transform: scale(1.05);

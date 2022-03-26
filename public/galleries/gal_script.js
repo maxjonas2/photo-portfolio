@@ -3,8 +3,8 @@ let lbCurrentIndex = 0;
 let imageCount = 0;
 
 const PORT = "8888";
-// const origin = window.location.origin.replace(/\:\d{4}/, `:${PORT}`);
-const origin = "https://jkieling.netlify.app";
+const origin = window.location.origin.replace(/\:\d{4}/, `:${PORT}`);
+// const origin = "https://jkieling.netlify.app";
 
 const baseUrl = "https://storage.googleapis.com";
 const bucketBaseName = "kieling-portfolio-images-";
