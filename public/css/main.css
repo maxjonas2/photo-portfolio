@@ -341,12 +341,9 @@ header ul {
   position: fixed;
   inset: 0;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.8);
   display: none;
+  background-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
-}
-.menu-container.shown {
-  opacity: 1;
 }
 .menu-container .menu {
   --width: 200px;
@@ -357,6 +354,7 @@ header ul {
   padding: 1rem;
   box-shadow: 0 -1px 10px black;
   transform: translateX(calc(var(--width) + 10px));
+  transition: transform 0.24s ease;
 }
 .menu-container .menu.shown {
   transform: translateX(0);

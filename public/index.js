@@ -27,38 +27,50 @@ const path = "FOTO1.jpg";
 
 const HEADER_HIDDEN_SCROLL_POINT = 300;
 const HERO = document.querySelector(".hero-container");
+const isMenuOpen = false;
 
 const menu = document.getElementById("menu");
-const btnHamburger = document.getElementById("btn-hamburger");
 const menuContainer = document.getElementById("menu-container");
+const btnHamburger = document.getElementById("btn-hamburger");
+const btnMenuClose = document.getElementById("btn-menu-close");
 const isSmallScreen = window.matchMedia("(max-width: 500px)").matches;
 
+let scrollMap = 0;
+
+document.body.addEventListener("click", e => {
+  if (!isMenuOpen) {
+    if (e.target === btnMenuClose || e.target === menuContainer) {
+      console.log("clicked for close");
+      closeMenu();
+    }
+  }
+});
+
 if (btnHamburger) {
-  btnHamburger.addEventListener("click", () => {
-    openMenu();
-  });
+  btnHamburger.addEventListener("click", openMenu);
 }
 
 function openMenu() {
-  menu.parentElement.style.display = "block";
-  menu.parentElement.classList.add("shown");
-  menu.classList.add("shown");
+  menuContainer.style.display = "block";
+  menuContainer.style.opacity = 1;
+
+  setTimeout(() => {
+    menu.classList.add("shown");
+    isMenuOpen = true;
+  }, 100);
 }
 
 function closeMenu() {
-  menu.parentElement.style.display = "none";
-  menu.parentElement.classList.remove("shown");
+  menu.ontransitionend = function () {
+    Object.assign(menuContainer.style, {
+      display: "block",
+      opacity: 0
+    });
+    isMenuOpen = false;
+  };
+
   menu.classList.remove("shown");
 }
-
-menuContainer &&
-  menuContainer.addEventListener("click", e => {
-    if (e.target === menuContainer) {
-      closeMenu();
-    }
-  });
-
-let scrollMap = 0;
 
 function moveBackground() {
   const scrollMap = window.scrollY / 45;
@@ -246,7 +258,7 @@ function populateGallery(data) {
       container.addEventListener("click", openLightbox);
 
       const loader = document.createElement("img");
-      loader.src = "loader.svg";
+      loader.src = "./galleries/loader.svg";
       loader.classList.add("loader");
       container.append(loader);
 

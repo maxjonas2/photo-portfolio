@@ -251,13 +251,9 @@ header ul {
 
 .menu-container {
   @include fill;
-  background-color: rgba(black, 0.8);
   display: none;
+  background-color: rgba(black, 0.8);
   opacity: 0;
-
-  &.shown {
-    opacity: 1;
-  }
 
   .menu {
     --width: 200px;
@@ -268,6 +264,7 @@ header ul {
     padding: 1rem;
     box-shadow: 0 -1px 10px black;
     transform: translateX(calc(var(--width) + 10px));
+    transition: transform 0.24s ease;
 
     &.shown {
       transform: translateX(0);
@@ -318,10 +315,6 @@ header ul {
 
 .gap-small {
   gap: 2rem;
-}
-
-.article-welcome {
-  // max-width: 500px;
 }
 
 .shadowed-card {

@@ -1,2 +1,7 @@
 [functions]
 directory = "netlify/functions"
+
+[[redirects]]
+from = "/page/*"
+to = "/.netlify/functions/getPage"
+ttl = 3600
