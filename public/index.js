@@ -38,7 +38,7 @@ const isSmallScreen = window.matchMedia("(max-width: 500px)").matches;
 let scrollMap = 0;
 
 document.body.addEventListener("click", e => {
-  if (!isMenuOpen) {
+  if (isMenuOpen) {
     if (e.target === btnMenuClose || e.target === menuContainer) {
       console.log("clicked for close");
       closeMenu();
@@ -182,7 +182,7 @@ async function fetchLinks(category) {
   return json;
 }
 
-function getBucketName(id, size = "large") {
+function getBucketName(id, size = "small") {
   return "kieling-portfolio-images-" + id.replace(" ", "%20") + `-${size}`;
 }
 
