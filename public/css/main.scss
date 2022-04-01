@@ -666,3 +666,7 @@ img.shown {
   opacity: 1;
   transform: translateY(0);
 }
+
+.gradient-hightlight {
+  background-image: linear-gradient(to right, red, rebeccapurple);
+}

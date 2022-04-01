@@ -1,18 +1,25 @@
-// import { initializeApp } from "firebase/app";
-// import { getDatabase, ref, onValue } from "firebase/database";
+import { initializeApp } from "firebase/app";
+import {
+  getDatabase,
+  ref,
+  onValue,
+  update,
+  child,
+  get
+} from "firebase/database";
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCqJ0CZmuAYkau-pZg66zfUWswXgVmr0sA",
-//   authDomain: "photo-portolio.firebaseapp.com",
-//   databaseURL: "https://photo-portolio-default-rtdb.firebaseio.com",
-//   projectId: "photo-portolio",
-//   storageBucket: "photo-portolio.appspot.com",
-//   messagingSenderId: "233123194430",
-//   appId: "1:233123194430:web:b4932f559227dc5572536f"
-// };
+const firebaseConfig = {
+  apiKey: "AIzaSyCqJ0CZmuAYkau-pZg66zfUWswXgVmr0sA",
+  authDomain: "photo-portolio.firebaseapp.com",
+  databaseURL: "https://photo-portolio-default-rtdb.firebaseio.com",
+  projectId: "photo-portolio",
+  storageBucket: "photo-portolio.appspot.com",
+  messagingSenderId: "233123194430",
+  appId: "1:233123194430:web:b4932f559227dc5572536f"
+};
 
-// const app = initializeApp(firebaseConfig);
-// const db = getDatabase(app);
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
 // const dbTextRef = ref(db, "homepage/text/section1");
 // onValue(dbTextRef, snapshot => {
@@ -20,6 +27,32 @@
 //   if (par) {
 //     console.log(snapshot.val());
 //   }
+// });'
+
+const dbRef = ref(db);
+
+get(child(dbRef, "visitorInfo")).then(snapshot => {
+  if (snapshot.exists()) {
+    const { visitorCount } = snapshot.val();
+    update(dbRef, { "/visitorInfo/visitorCount": visitorCount + 1 })
+      .then(() => {
+        console.log("count updated");
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+});
+
+// onValue(visitorInfoRef, snapshot => {
+//   const { visitorCount } = snapshot.val();
+//   update(visitorInfoRef, { visitorCount: visitorCount + 1 })
+//     .then(e => {
+//       console.log(e, "data updated");
+//     })
+//     .catch(error => {
+//       console.error(error);
+//     });
 // });
 
 const contentType = "image/jpeg";

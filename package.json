@@ -14,5 +14,8 @@
   "dependencies": {
     "@google-cloud/storage": "^5.18.2",
     "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.9.2"
   }
 }
