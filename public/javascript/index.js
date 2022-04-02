@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getDatabase, ref, update, child, get } from "firebase/database";
 import { firebaseConfig } from "./config";
 
@@ -12,6 +13,21 @@ const db = getDatabase(app);
 //     console.log(snapshot.val());
 //   }
 // });'
+
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+function googleSignIn() {
+  signInWithPopup(auth, provider)
+    .then(result => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
 
 const dbRef = ref(db);
 
@@ -47,10 +63,16 @@ const HERO = document.querySelector(".hero-container");
 const isMenuOpen = false;
 
 const menu = document.getElementById("menu");
+const btnSignIn = document.getElementById("btn-signin");
 const menuContainer = document.getElementById("menu-container");
 const btnHamburger = document.getElementById("btn-hamburger");
 const btnMenuClose = document.getElementById("btn-menu-close");
 const isSmallScreen = window.matchMedia("(max-width: 500px)").matches;
+
+btnSignIn.addEventListener("click", e => {
+  e.preventDefault();
+  googleSignIn();
+});
 
 let scrollMap = 0;
 
@@ -294,7 +316,7 @@ function populateGallery(data) {
       container.addEventListener("click", openLightbox);
 
       const loader = document.createElement("img");
-      loader.src = "/public/website_assets/svg/loader.svg";
+      loader.src = "/website_assets/svg/loader.svg";
       loader.classList.add("loader");
       container.append(loader);
 
