@@ -291,7 +291,7 @@ function populateGallery(data) {
       container.addEventListener("click", openLightbox);
 
       const loader = document.createElement("img");
-      loader.src = "../loader.svg";
+      loader.src = "../galleries/loader.svg";
       loader.classList.add("loader");
       container.append(loader);
 
