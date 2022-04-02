@@ -7,6 +7,8 @@ const storage = new Storage({
   projectId: "photo-portolio "
 });
 
+let origin = "";
+
 function generateJSON(files, bucketId) {
   return files.map(item => {
     return {
@@ -32,15 +34,35 @@ async function getFiles(bucketId) {
   return await listObjects(bucketId);
 }
 
+function verifyOrigin() {
+  const allowedPorts = ["8888", "80", "5500", "3000", "9000"];
+  const allowedUrls = [
+    "http://localhost",
+    "http://jkieling.com",
+    "http://127.0.0.1"
+  ];
+  const allowedOrigins = [];
+  allowedUrls.forEach(url => {
+    allowedPorts.forEach(port => {
+      allowedOrigins.push(url + ":" + port);
+    });
+  });
+  return allowedOrigins.includes(origin);
+}
+
 function getResponse(body, statusCode = 200) {
   body = typeof body === "string" ? body : JSON.stringify(body);
   return {
     statusCode,
+    headers: {
+      "Access-Control-Allow-Origin": verifyOrigin() ? origin : "null"
+    },
     body
   };
 }
 
 const handler = async event => {
+  origin = event.headers.origin;
   try {
     const bucket = event.queryStringParameters.bucket || "concerts";
     switch (bucket) {

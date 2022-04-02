@@ -454,29 +454,40 @@ span.shadow-large {
   @include centered-items;
   margin-bottom: 2rem;
   color: black;
+  position: relative;
 
   img {
     border-radius: 2px;
-    max-height: 80vh;
+    width: clamp(300px, 90vw, 900px);
     box-shadow: 0 0 10px rgba(black, 0.4);
+    // max-height: 80vh;
     // width: 60vw;
     // max-width: 100vw;
+  }
+
+  img.image-svg {
+    box-shadow: none;
   }
 }
 
 .lightbox-btn {
-  --size: 4rem;
+  --size: 3rem;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: var(--size);
   height: var(--size);
-  background-color: rgba(white, 0.25);
+  background-color: rgba(white, 0.2);
   color: black;
   font-weight: bold;
-  margin: 0 3rem;
+  margin: 0 1rem;
   border-radius: calc(var(--size) / 2);
   cursor: pointer;
+  transition: background-color 150ms ease;
+
+  &:hover {
+    background-color: rgba(white, 0.4);
+  }
 }
 
 #lightbox-btn-back > img {
@@ -486,19 +497,25 @@ span.shadow-large {
 .btn-lightbox-close {
   @include centered-items;
   position: fixed;
-  width: 4rem;
-  height: 4rem;
+  width: 2rem;
+  height: 2rem;
   top: 1rem;
   right: 1rem;
   background-color: rgba(white, 0.25);
   border-radius: 2rem;
   cursor: pointer;
 
-  > img {
+  > :is(img, svg) {
     pointer-events: none;
+    width: 60%;
   }
 }
 
+.lightbox-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
 /* ----- FOOTER STYLE ----- */
 
 footer {
