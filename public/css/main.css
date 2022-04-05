@@ -104,7 +104,7 @@ strong {
 }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font-text), sans-serif;
   background-color: var(--bg-color);
   color: #d2d2d2;
   scroll-behavior: smooth;
@@ -148,7 +148,7 @@ h1 {
 }
 
 p {
-  line-height: 1.8;
+  line-height: 2;
 }
 
 :is(h1, h2, h3, h4, p).normal {

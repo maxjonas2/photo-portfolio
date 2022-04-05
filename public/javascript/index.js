@@ -1,77 +1,3 @@
-// import { initializeApp } from "firebase/app";
-// import {
-//   getAuth,
-//   signInWithPopup,
-//   GoogleAuthProvider,
-//   signInWithRedirect
-// } from "firebase/auth";
-// import { getDatabase, ref, update, child, get } from "firebase/database";
-// // import { firebaseConfig } from "./config";
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCqJ0CZmuAYkau-pZg66zfUWswXgVmr0sA",
-//   authDomain: "photo-portolio.firebaseapp.com",
-//   databaseURL: "https://photo-portolio-default-rtdb.firebaseio.com",
-//   projectId: "photo-portolio",
-//   storageBucket: "photo-portolio.appspot.com",
-//   messagingSenderId: "233123194430",
-//   appId: "1:233123194430:web:b4932f559227dc5572536f"
-// };
-
-// console.log("javascript loaded");
-
-// const app = initializeApp(firebaseConfig);
-// const db = getDatabase(app);
-
-// const dbTextRef = ref(db, "homepage/text/section1");
-// onValue(dbTextRef, snapshot => {
-//   const par = document.querySelector(".aside-info > p");
-//   if (par) {
-//     console.log(snapshot.val());
-//   }
-// });'
-
-// const auth = getAuth(app);
-// const provider = new GoogleAuthProvider();
-
-// function googleSignIn() {
-//   signInWithRedirect(auth, provider)
-//     .then(result => {
-//       const credential = GoogleAuthProvider.credentialFromResult(result);
-//       const token = credential.accessToken;
-//       const user = result.user;
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// }
-
-// const dbRef = ref(db);
-
-// get(child(dbRef, "visitorInfo")).then(snapshot => {
-//   if (snapshot.exists()) {
-//     const { visitorCount } = snapshot.val();
-//     update(dbRef, { "/visitorInfo/visitorCount": visitorCount + 1 })
-//       .then(() => {
-//         console.log("count updated");
-//       })
-//       .catch(error => {
-//         console.error(error);
-//       });
-//   }
-// });
-
-// onValue(visitorInfoRef, snapshot => {
-//   const { visitorCount } = snapshot.val();
-//   update(visitorInfoRef, { visitorCount: visitorCount + 1 })
-//     .then(e => {
-//       console.log(e, "data updated");
-//     })
-//     .catch(error => {
-//       console.error(error);
-//     });
-// });
-
 console.log("javascript called");
 
 const contentType = "image/jpeg";
@@ -191,8 +117,8 @@ let lbCurrentIndex = 0;
 let imageCount = 0;
 
 const PORT = "8888";
-const origin = window.location.origin.replace(/\:\d{4}/, `:${PORT}`);
-// const origin = "https://jkieling.netlify.app";
+// const origin = window.location.origin.replace(/\:\d{4}/, `:${PORT}`);
+const origin = "https://jkieling.netlify.app";
 
 const baseUrl = "https://storage.googleapis.com";
 const bucketBaseName = "kieling-portfolio-images-";
