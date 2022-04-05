@@ -1,24 +1,24 @@
-import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signInWithRedirect
-} from "firebase/auth";
-import { getDatabase, ref, update, child, get } from "firebase/database";
-// import { firebaseConfig } from "./config";
+// import { initializeApp } from "firebase/app";
+// import {
+//   getAuth,
+//   signInWithPopup,
+//   GoogleAuthProvider,
+//   signInWithRedirect
+// } from "firebase/auth";
+// import { getDatabase, ref, update, child, get } from "firebase/database";
+// // import { firebaseConfig } from "./config";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCqJ0CZmuAYkau-pZg66zfUWswXgVmr0sA",
-  authDomain: "photo-portolio.firebaseapp.com",
-  databaseURL: "https://photo-portolio-default-rtdb.firebaseio.com",
-  projectId: "photo-portolio",
-  storageBucket: "photo-portolio.appspot.com",
-  messagingSenderId: "233123194430",
-  appId: "1:233123194430:web:b4932f559227dc5572536f"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCqJ0CZmuAYkau-pZg66zfUWswXgVmr0sA",
+//   authDomain: "photo-portolio.firebaseapp.com",
+//   databaseURL: "https://photo-portolio-default-rtdb.firebaseio.com",
+//   projectId: "photo-portolio",
+//   storageBucket: "photo-portolio.appspot.com",
+//   messagingSenderId: "233123194430",
+//   appId: "1:233123194430:web:b4932f559227dc5572536f"
+// };
 
-console.log('javascript loaded');
+// console.log("javascript loaded");
 
 // const app = initializeApp(firebaseConfig);
 // const db = getDatabase(app);
@@ -34,21 +34,8 @@ console.log('javascript loaded');
 // const auth = getAuth(app);
 // const provider = new GoogleAuthProvider();
 
-<<<<<<< HEAD
-function googleSignIn() {
-  signInWithRedirect(auth, provider)
-    .then(result => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
-    })
-    .catch(error => {
-      console.log(error);
-    });
-}
-=======
 // function googleSignIn() {
-//   signInWithPopup(auth, provider)
+//   signInWithRedirect(auth, provider)
 //     .then(result => {
 //       const credential = GoogleAuthProvider.credentialFromResult(result);
 //       const token = credential.accessToken;
@@ -58,7 +45,6 @@ function googleSignIn() {
 //       console.log(error);
 //     });
 // }
->>>>>>> b5a8ff3b60c5cf568cc325023db94d1e459c51ad
 
 // const dbRef = ref(db);
 
@@ -86,6 +72,8 @@ function googleSignIn() {
 //     });
 // });
 
+console.log("javascript called");
+
 const contentType = "image/jpeg";
 const path = "FOTO1.jpg";
 
@@ -100,10 +88,11 @@ const btnHamburger = document.getElementById("btn-hamburger");
 const btnMenuClose = document.getElementById("btn-menu-close");
 const isSmallScreen = window.matchMedia("(max-width: 500px)").matches;
 
-btnSignIn.addEventListener("click", e => {
-  e.preventDefault();
-  googleSignIn();
-});
+btnSignIn &&
+  btnSignIn.addEventListener("click", e => {
+    e.preventDefault();
+    googleSignIn();
+  });
 
 let scrollMap = 0;
 
@@ -347,7 +336,7 @@ function populateGallery(data) {
       container.addEventListener("click", openLightbox);
 
       const loader = document.createElement("img");
-      loader.src = "/website_assets/svg/loader.svg";
+      loader.src = "../website_assets/svg/loader.svg";
       loader.classList.add("loader");
       container.append(loader);
 
