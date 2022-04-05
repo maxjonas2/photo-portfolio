@@ -55,7 +55,7 @@ function getResponse(body, statusCode = 200) {
   return {
     statusCode,
     headers: {
-      "Access-Control-Allow-Origin": verifyOrigin() ? origin : "null"
+      "Access-Control-Allow-Origin": "*"
     },
     body
   };
