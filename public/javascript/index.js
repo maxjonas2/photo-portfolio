@@ -18,8 +18,10 @@ const firebaseConfig = {
   appId: "1:233123194430:web:b4932f559227dc5572536f"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+console.log('javascript loaded');
+
+// const app = initializeApp(firebaseConfig);
+// const db = getDatabase(app);
 
 // const dbTextRef = ref(db, "homepage/text/section1");
 // onValue(dbTextRef, snapshot => {
@@ -29,9 +31,10 @@ const db = getDatabase(app);
 //   }
 // });'
 
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+// const auth = getAuth(app);
+// const provider = new GoogleAuthProvider();
 
+<<<<<<< HEAD
 function googleSignIn() {
   signInWithRedirect(auth, provider)
     .then(result => {
@@ -43,21 +46,34 @@ function googleSignIn() {
       console.log(error);
     });
 }
+=======
+// function googleSignIn() {
+//   signInWithPopup(auth, provider)
+//     .then(result => {
+//       const credential = GoogleAuthProvider.credentialFromResult(result);
+//       const token = credential.accessToken;
+//       const user = result.user;
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// }
+>>>>>>> b5a8ff3b60c5cf568cc325023db94d1e459c51ad
 
-const dbRef = ref(db);
+// const dbRef = ref(db);
 
-get(child(dbRef, "visitorInfo")).then(snapshot => {
-  if (snapshot.exists()) {
-    const { visitorCount } = snapshot.val();
-    update(dbRef, { "/visitorInfo/visitorCount": visitorCount + 1 })
-      .then(() => {
-        console.log("count updated");
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
-});
+// get(child(dbRef, "visitorInfo")).then(snapshot => {
+//   if (snapshot.exists()) {
+//     const { visitorCount } = snapshot.val();
+//     update(dbRef, { "/visitorInfo/visitorCount": visitorCount + 1 })
+//       .then(() => {
+//         console.log("count updated");
+//       })
+//       .catch(error => {
+//         console.error(error);
+//       });
+//   }
+// });
 
 // onValue(visitorInfoRef, snapshot => {
 //   const { visitorCount } = snapshot.val();
