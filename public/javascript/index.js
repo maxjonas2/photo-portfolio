@@ -1,7 +1,22 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signInWithRedirect
+} from "firebase/auth";
 import { getDatabase, ref, update, child, get } from "firebase/database";
-import { firebaseConfig } from "./config";
+// import { firebaseConfig } from "./config";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCqJ0CZmuAYkau-pZg66zfUWswXgVmr0sA",
+  authDomain: "photo-portolio.firebaseapp.com",
+  databaseURL: "https://photo-portolio-default-rtdb.firebaseio.com",
+  projectId: "photo-portolio",
+  storageBucket: "photo-portolio.appspot.com",
+  messagingSenderId: "233123194430",
+  appId: "1:233123194430:web:b4932f559227dc5572536f"
+};
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
@@ -18,7 +33,7 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 function googleSignIn() {
-  signInWithPopup(auth, provider)
+  signInWithRedirect(auth, provider)
     .then(result => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
