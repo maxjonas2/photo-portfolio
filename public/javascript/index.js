@@ -101,8 +101,8 @@ Array.from(document.getElementsByClassName("children-slide")).forEach(
     Array.from(container.children).forEach((child, index) => {
       child.style.transitionDelay =
         (
-          (isSmallScreen ? 0 : 100) +
-          100 * index * (isSmallScreen ? 1 : 2.5)
+          (isSmallScreen ? 0 : 0) +
+          0 * index * (isSmallScreen ? 1 : 2.5)
         ).toString() + "ms";
       child.classList.add("slide-on-view");
       slideIntoViewObserver.observe(child);
@@ -164,7 +164,7 @@ async function fetchLinks(category) {
   return json;
 }
 
-function getBucketName(id, size = "small") {
+function getBucketName(id, size = "large") {
   return "kieling-portfolio-images-" + id.replace(" ", "%20") + `-${size}`;
 }
 
@@ -294,7 +294,7 @@ function callObserve() {
 
 const fadeOnViewObserver = new IntersectionObserver(fadeOnViewCallback, {
   threshold: 0,
-  rootMargin: "-20% 0% -20% 0%"
+  rootMargin: "-30% 0% -30% 0%"
 });
 
 function fadeOnViewCallback(entries) {
@@ -305,7 +305,7 @@ function fadeOnViewCallback(entries) {
         // entry.target.style.transform = "scale(1)";
       }
     } else {
-      entry.target.style.opacity = 0.1;
+      entry.target.style.opacity = 0.06;
       if (isSmallScreen) {
         // entry.target.style.transform = "scale(.9)";
       }

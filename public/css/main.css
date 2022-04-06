@@ -393,7 +393,7 @@ header ul {
   border: 2px solid #c8c8c8;
   color: #ebebeb;
   text-transform: uppercase;
-  border-radius: 12px;
+  border-radius: 0.1rem;
   font-weight: bold;
   font-family: var(--font-text);
   cursor: pointer;
@@ -407,7 +407,7 @@ header ul {
 }
 
 .shadowed-card {
-  background-color: #1a1a1a;
+  background-color: #1e1e1e;
   padding: 2rem;
   border-radius: 4px;
   box-shadow: 0 30px 20px -30px rgba(0, 0, 0, 0.65);
@@ -433,6 +433,10 @@ header ul {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  filter: saturate(0);
+}
+.mosaic img:hover {
+  filter: saturate(1);
 }
 
 .full-row {
@@ -561,7 +565,7 @@ span.shadow-large {
   align-items: center;
   width: var(--size);
   height: var(--size);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
   color: black;
   font-weight: bold;
   margin: 0 1rem;
@@ -711,6 +715,9 @@ img.shown {
   align-self: flex-start;
 }
 
+.article-about {
+  border-radius: 1rem;
+}
 .article-about p {
   column-count: 2;
   column-gap: 4rem;
@@ -720,6 +727,11 @@ img.shown {
   .article-about p {
     column-count: 1;
   }
+}
+
+.article-welcome,
+.article-work {
+  border-radius: 0.2rem;
 }
 
 .headshot-image-container {
@@ -742,7 +754,7 @@ img.shown {
 .slide-on-view {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 1.5s ease;
+  transition: all 1s ease;
 }
 
 .slide-on-view.in-view {
