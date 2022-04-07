@@ -17,6 +17,7 @@ body {
   background-color: var(--bg-color);
   color: rgb(210, 210, 210);
   scroll-behavior: smooth;
+  letter-spacing: 1px;
 }
 
 h1,
@@ -101,7 +102,7 @@ nav a:not(.btn-link):hover {
   }
 }
 
-section:not(.section-hero, .section-footer) {
+section:not(.section-hero) {
   margin-top: 2rem;
 }
 
@@ -524,16 +525,16 @@ span.shadow-large {
 /* ----- FOOTER STYLE ----- */
 
 footer {
-  min-height: 160px;
+  min-height: 100px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: max(15%, 4rem);
+  gap: max(8%, 4rem);
 
   @media (max-width: $breakpoint-small) {
     flex-direction: column;
     padding-top: 2rem;
-    margin-bottom: 2rem;
+    padding-bottom: 2rem;
   }
 
   a {
@@ -629,6 +630,9 @@ img.shown {
   //   rgba(50, 50, 50, 0.68) 40%,
   //   transparent 90%
   // );
+}
+
+.section-odd {
   background-color: rgba(40, 40, 40, 0.68);
 }
 
@@ -697,4 +701,52 @@ img.shown {
 
 .gradient-hightlight {
   background-image: linear-gradient(to right, red, rebeccapurple);
+}
+
+/* ----- Contact form ------ */
+
+#form-contact {
+  max-width: 600px;
+}
+
+.form-item {
+  label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+    letter-spacing: 1.1px;
+  }
+
+  input,
+  textarea {
+    background-color: rgba(white, 0.05);
+    height: 2rem;
+    width: 100%;
+    border: none;
+    color: rgba(white, 0.75);
+    text-indent: 1rem;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+
+  textarea {
+    height: 10rem;
+    padding: 1rem;
+    text-indent: 0;
+    font-size: 1rem;
+    resize: none;
+  }
+}
+
+.form-item:not(:last-child) {
+  margin-bottom: 1.4rem;
+}
+
+.section-contact {
+  padding: 2rem 0;
+}
+
+#btn-form-send {
+  width: 150px;
+  cursor: pointer;
 }

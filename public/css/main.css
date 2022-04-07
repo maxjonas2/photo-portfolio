@@ -108,6 +108,7 @@ body {
   background-color: var(--bg-color);
   color: #d2d2d2;
   scroll-behavior: smooth;
+  letter-spacing: 1px;
 }
 
 h1,
@@ -190,7 +191,7 @@ nav a:not(.btn-link):hover {
   color: black;
 }
 
-section:not(.section-hero, .section-footer) {
+section:not(.section-hero) {
   margin-top: 2rem;
 }
 
@@ -607,17 +608,17 @@ span.shadow-large {
 
 /* ----- FOOTER STYLE ----- */
 footer {
-  min-height: 160px;
+  min-height: 100px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: max(15%, 4rem);
+  gap: max(8%, 4rem);
 }
 @media (max-width: 550px) {
   footer {
     flex-direction: column;
     padding-top: 2rem;
-    margin-bottom: 2rem;
+    padding-bottom: 2rem;
   }
 }
 footer a {
@@ -700,6 +701,9 @@ img.shown {
 /* ----- ----- */
 .section-about {
   padding: 2rem 0;
+}
+
+.section-odd {
   background-color: rgba(40, 40, 40, 0.68);
 }
 
@@ -764,6 +768,49 @@ img.shown {
 
 .gradient-hightlight {
   background-image: linear-gradient(to right, red, rebeccapurple);
+}
+
+/* ----- Contact form ------ */
+#form-contact {
+  max-width: 600px;
+}
+
+.form-item label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+  letter-spacing: 1.1px;
+}
+.form-item input,
+.form-item textarea {
+  background-color: rgba(255, 255, 255, 0.05);
+  height: 2rem;
+  width: 100%;
+  border: none;
+  color: rgba(255, 255, 255, 0.75);
+  text-indent: 1rem;
+  border-radius: 4px;
+  font-family: monospace;
+}
+.form-item textarea {
+  height: 10rem;
+  padding: 1rem;
+  text-indent: 0;
+  font-size: 1rem;
+  resize: none;
+}
+
+.form-item:not(:last-child) {
+  margin-bottom: 1.4rem;
+}
+
+.section-contact {
+  padding: 2rem 0;
+}
+
+#btn-form-send {
+  width: 150px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=main.css.map */

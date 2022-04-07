@@ -34,7 +34,7 @@
               >
             </li>
             <li><a class="chip" href="#section-about">About</a></li>
-            <li><a class="chip" href="#section-about">Contact</a></li>
+            <li><a class="chip" href="#section-contact">Contact</a></li>
             <li>
               <a href="https://www.instagram.com/j.kieling">
                 <img
@@ -157,7 +157,7 @@
         
 
 
-      <section class="section-about" id="section-about">
+      <section class="section-about section-odd" id="section-about">
         <div class="content">
           <div class="splitter horizontal-items start double-gap">
             <div class="container headshot-image">
@@ -188,14 +188,30 @@
         </div>
       </section>
     </section>
-    <section>
-      <div class="content">
-        <h3 class="article-contact">Contact</h3>
-        <p>Under construction</p>
+    <section class="section-contact" id="section-contact">
+      <div class="content flow">
+        <h3 class="article-contact article-title">Contact me</h3>
+        <form action="" class="form-container form-contact" id="form-contact">
+          <div class="form-item">
+            <label for="">Name</label>
+            <input class="form-input" type="text" name="name" id="input-contact-name" required/>
+          </div>
+          <div class="form-item">
+            <label for="">Email</label>
+            <input class="form-input" type="email" name="email" id="input-contact-email" required/>
+          </div>
+          <div class="form-item">
+            <label for="">Message</label>
+            <textarea spellcheck="false" autocapitalize="sentences" minlength="20" maxlength="200" rows="10" required></textarea>
+          </div>
+          <div class="form-item">
+            <button class="btn btn-link" id="btn-form-send" type="submit">Send</button>
+          </div>
+        </form>
       </div>
     </section>
 
-    <section class="section-footer" id="section-contact">
+    <section class="section-footer section-odd"s>
       <div class="content">
         <footer>
           <a href="">About</a>

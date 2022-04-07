@@ -142,7 +142,6 @@ function lightboxToggle(status) {
 }
 
 document.body.addEventListener("click", e => {
-  console.log(e.target);
   if (
     e.target === lightboxOverlay ||
     e.target === lightboxContainer ||
@@ -335,3 +334,12 @@ $(() => {
 });
 
 loadGallery("concerts");
+
+/* ----- CONTACT FORM LOGIC ----- */
+
+const contactForm = document.getElementById("form-contact");
+
+contactForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const data = new FormData(e.target);
+});
