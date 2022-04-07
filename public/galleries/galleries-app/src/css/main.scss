@@ -179,27 +179,6 @@ header ul {
   }
 }
 
-.hero {
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: var(--header-height);
-}
-
-.hero-container {
-  height: 500px;
-  background-image: url("../website_assets/photos/hero_image.png");
-  background-size: cover;
-  background-position: center bottom;
-  background-attachment: scroll;
-  background-repeat: no-repeat;
-  position: relative;
-}
-
 .overlaid {
   position: relative;
   z-index: 2;
@@ -529,7 +508,7 @@ footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: max(15%, 4rem);
+  gap: 4rem;
 
   @media (max-width: $breakpoint-small) {
     flex-direction: column;
