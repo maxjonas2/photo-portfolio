@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Loader from "../assets/svg/Loader.js";
 import AlbumImage from "../components/AlbumImage.js";
 import { AlbumPicker } from "../components/AlbumPicker.js";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { ImageGrid } from "../components/ImageGrid.js";
 
 const Homepage = () => {
   const origin = "https://jkieling.netlify.app";
@@ -35,6 +36,11 @@ const Homepage = () => {
       });
   }, [params]);
 
+  useEffect(() => {
+    if (images.length === 0) return;
+    console.log(images);
+  }, [images]);
+
   const albums = [
     { value: "concerts", label: "Concerts" },
     { value: "bw", label: "Black & White" },
@@ -51,15 +57,16 @@ const Homepage = () => {
             selected={params.album}
           />
 
-          <div className="gallery-mosaic" id="gallery-mosaic">
+          {images.length !== 0 && <ImageGrid images={images} />}
+
+          {/* <div className="gallery-mosaic" id="gallery-mosaic">
             {images.length > 0
               ? images.map(image => {
                   return <AlbumImage key={image.name} url={image.url} />;
                 })
               : null}
-          </div>
+          </div> */}
         </div>
-        <script></script>
       </section>
       <section>
         <div className="content">
