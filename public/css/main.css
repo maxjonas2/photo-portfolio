@@ -107,6 +107,7 @@ body {
   font-family: var(--font-text), sans-serif;
   background-color: var(--bg-color);
   color: #d2d2d2;
+  letter-spacing: 1.2px;
   scroll-behavior: smooth;
 }
 
