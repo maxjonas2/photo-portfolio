@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "w": "npx nodemon server.js"
+    "w": "npx nodemon server.js", 
+    "react" : "npm --prefix public/galleries/galleries-app start"
   },
   "keywords": [],
   "author": "",
