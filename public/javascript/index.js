@@ -5,7 +5,6 @@ const path = "FOTO1.jpg";
 
 const HEADER_HIDDEN_SCROLL_POINT = 300;
 const HERO = document.querySelector(".hero-container");
-const isMenuOpen = false;
 
 const menu = document.getElementById("menu");
 const btnSignIn = document.getElementById("btn-signin");
@@ -13,6 +12,8 @@ const menuContainer = document.getElementById("menu-container");
 const btnHamburger = document.getElementById("btn-hamburger");
 const btnMenuClose = document.getElementById("btn-menu-close");
 const isSmallScreen = window.matchMedia("(max-width: 500px)").matches;
+
+let isMenuOpen = false;
 
 btnSignIn &&
   btnSignIn.addEventListener("click", e => {
@@ -22,12 +23,16 @@ btnSignIn &&
 
 let scrollMap = 0;
 
+$(".menu-link").on("click", () => {
+  console.log("menu link clicked");
+  setTimeout(() => {
+    closeMenu();
+  }, 250);
+});
+
 document.body.addEventListener("click", e => {
-  if (isMenuOpen) {
-    if (e.target === btnMenuClose || e.target === menuContainer) {
-      console.log("clicked for close");
-      closeMenu();
-    }
+  if (e.target === btnMenuClose || e.target === menuContainer) {
+    closeMenu();
   }
 });
 
@@ -35,25 +40,27 @@ if (btnHamburger) {
   btnHamburger.addEventListener("click", openMenu);
 }
 
-function openMenu() {
-  menuContainer.style.display = "block";
-  menuContainer.style.opacity = 1;
+const hideMenuCallBack = () => {
+  $(menuContainer).hide();
+};
 
+menu &&
+  menu.addEventListener("transitionend", () => {
+    if (!isMenuOpen) {
+      hideMenuCallBack();
+    }
+  });
+
+function openMenu() {
+  isMenuOpen = true;
+  $(menuContainer).show();
   setTimeout(() => {
     menu.classList.add("shown");
-    isMenuOpen = true;
-  }, 100);
+  }, 0);
 }
 
 function closeMenu() {
-  menu.ontransitionend = function () {
-    Object.assign(menuContainer.style, {
-      display: "block",
-      opacity: 0
-    });
-    isMenuOpen = false;
-  };
-
+  isMenuOpen = false;
   menu.classList.remove("shown");
 }
 
@@ -61,10 +68,14 @@ function moveBackground() {
   const scrollMap = window.scrollY / 45;
   HERO ? (HERO.style.backgroundPosition = `center ${scrollMap * 25}px`) : null;
   // document.body.style.backgroundColor = `hsl(250, 0%, ${scrollMap / 2}%)`;
-  requestAnimationFrame(moveBackground);
+  // requestAnimationFrame(moveBackground);
 }
 
-requestAnimationFrame(moveBackground);
+moveBackground();
+
+window.addEventListener("scroll", () => {
+  requestAnimationFrame(moveBackground);
+});
 
 let scrollInterval = setInterval(checkScroll, 1000);
 
@@ -268,7 +279,7 @@ function populateGallery(data) {
       const image = document.createElement("img");
       image.src = item.url;
       image.loading = "lazy";
-      image.classList.add("fade-on-view");
+      image.classList.add("fade-on-view", "shadowed-card");
       image.addEventListener(isWebkit ? "load" : "loadend", () => {
         setTimeout(() => {
           image.classList.add("shown");
@@ -337,9 +348,7 @@ loadGallery("concerts");
 
 /* ----- CONTACT FORM LOGIC ----- */
 
-const contactForm = document.getElementById("form-contact");
-
-contactForm.addEventListener("submit", e => {
+$("#form-contact").on("submit", e => {
   e.preventDefault();
   const data = new FormData(e.target);
 });

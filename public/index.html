@@ -23,6 +23,11 @@
     <script defer src="./javascript/index.js"></script>
   </head>
   <body>
+    <!-- <button class="btn btn-fixed-bottom-right" id="btn-back-top">
+      <svg width="80" height="80" viewBox="0 0 80 80">
+        <path stroke="rgb(80,80,80)" fill="transparent" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" d="M 20 50 L 40 30 L 60 50"/>
+      </svg>
+    </button> -->
     <header class="header-main overlaid">
       <div class="content header-content horizontal-items">
         <div class="logo">jKieling</div>
@@ -45,8 +50,8 @@
                 />
               </a>
             </li>
-            <li class="nav-permanent">
-              <button class="btn hamburger-icon-container" id="btn-hamburger">
+            <li class="nav-permanent show-on-small">
+              <button class="hamburger-icon-container" id="btn-hamburger">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -61,10 +66,10 @@
         <ul class="flow">
           <div class="title-container horizontal-items">
             <h4 class="upper">Menu</h4>
-            <button class="btn btn-menu-close" id="btn-menu-close"><span>+</span></button>
+            <button class="btn-menu-close" id="btn-menu-close"><span>+</span></button>
           </div>
-          <li><a class="chip" href="#section-about">About</a></li>
-          <li><a class="chip" href="#section-about">Contact</a></li>
+          <li><a class="chip menu-link" href="#section-contact">Contact</a></li>
+          <li><a class="chip menu-link" href="#section-about">About</a></li>
           <li>
             <a href="https://www.instagram.com/j.kieling">
               <img
@@ -92,7 +97,7 @@
         </div>
         <div class="hero-cta overlaid">
           <div class="horizontal-items gap-small">
-            <button class="btn hero-btn">Contact me</button>
+            <a href="#section-contact" class="btn hero-btn btn-link">Book me</a>
             <!-- <button class="btn hero-btn">Text</button> -->
           </div>
         </div>
@@ -101,7 +106,7 @@
     <section id="section-first">
       <div class="content flow">
         <div class="splitter horizontal-items">
-          <article class="article-welcome shadowed-card children-slide">
+          <article class="article-welcome shadowed-card padded children-slide">
             <!-- <h3 class="article-title">Welcome</h3> -->
             <p>
               My mission is to capture and share the best in rock music: that
@@ -111,7 +116,7 @@
               them.
             </p>
           </article>
-          <!-- <article class="article-galleries shadowed-card children-slide hide-breakpoint-medium">
+          <!-- <article class="article-galleries shadowed-card padded children-slide hide-breakpoint-medium">
             <h3 class="article-title">Lorem Ipsum</h3>
             <nav class="link-list">
               <ul class="horizontal-items centered" style="gap: 4rem">
@@ -126,7 +131,7 @@
       </section>
         <section class="section-second">
           <div class="content flow">
-            <article class="article-work shadowed-card">
+            <article class="article-work shadowed-card padded">
               <!-- <h3 class="article-title slide-on-view">Photos</h3> -->
               <div class="mosaic children-slide">
                 <img
@@ -190,7 +195,10 @@
     </section>
     <section class="section-contact" id="section-contact">
       <div class="content flow">
-        <h3 class="article-contact article-title">Contact me</h3>
+        <div id="container-article-contact">
+          <h3 class="article-title">Contact me</h3>
+          <!-- <span class="blinker"></span> -->
+        </div>
         <form action="" class="form-container form-contact" id="form-contact">
           <div class="form-item">
             <label for="">Name</label>
@@ -216,7 +224,7 @@
         <footer>
           <a href="">About</a>
           <a href="">Contact</a>
-          <a href="" class="btn" id="btn-signin">Sign In</a>
+          <!-- <a href="" id="btn-signin">Sign In</a> -->
           <a href="http://www.instagram.com/j.kieling">
             <img
               width="28"
