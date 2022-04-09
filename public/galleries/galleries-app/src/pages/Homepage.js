@@ -25,6 +25,7 @@ const Homepage = () => {
   const [images, setImages] = useState([]);
 
   React.useEffect(() => {
+    console.log(params);
     if (!params.album) {
       navigate("concerts", { replace: true });
       return;
@@ -35,11 +36,6 @@ const Homepage = () => {
         setImages(data);
       });
   }, [params]);
-
-  useEffect(() => {
-    if (images.length === 0) return;
-    console.log(images);
-  }, [images]);
 
   const albums = [
     { value: "concerts", label: "Concerts" },
@@ -68,13 +64,13 @@ const Homepage = () => {
           </div> */}
         </div>
       </section>
-      <section>
+      {/* <section>
         <div className="content">
           <a href="http://jkieling.com" className="btn btn-link">
             Back
           </a>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
