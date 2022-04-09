@@ -279,7 +279,8 @@ function populateGallery(data) {
       const image = document.createElement("img");
       image.src = item.url;
       image.loading = "lazy";
-      image.classList.add("fade-on-view", "shadowed-card");
+      image.classList.add("shadowed-card");
+      // Add class "fade-on-view" for fading in on scroll into view effect
       image.addEventListener(isWebkit ? "load" : "loadend", () => {
         setTimeout(() => {
           image.classList.add("shown");
