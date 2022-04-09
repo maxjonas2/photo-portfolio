@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" translate="no">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,17 +10,15 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-    <!-- <script defer src="../dist/bundle.js"></script> -->
-    <script defer src="../javascript/index.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Raleway:wght@200;400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/main.css" />
   </head>
   <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
     <header class="header-main overlaid">
       <div class="content header-content horizontal-items">
         <div class="logo">jKieling</div>
@@ -47,31 +45,18 @@
         </nav>
       </div>
     </header>
-
     <div class="header-placeholder"></div>
 
-    <section>
-      <div class="content flow gallery-mosaic-container">
-        <div class="container-portfolio-picker">
-          <!-- <div class="selector-chip"></div> -->
-          <a
-            data-value="concerts"
-            class="normal upper category-picker selected"
-          >
-            Color
-          </a>
-          <a data-value="bw" class="normal upper category-picker">
-            Black & White
-          </a>
-          <a data-value="portrait" class="normal upper category-picker">
-            Portraits
-          </a>
-        </div>
-        <div class="gallery-mosaic" id="gallery-mosaic">
-          <!-- Imaged loaded dynamically via script -->
-        </div>
-      </div>
-      <script></script>
-    </section>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
   </body>
 </html>
