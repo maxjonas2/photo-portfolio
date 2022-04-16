@@ -472,7 +472,7 @@ button {
 @media (max-width: 550px) {
   .shadowed-card {
     background-color: transparent;
-    padding: 0rem;
+    padding: 0rem !important;
     border-radius: 0px;
     box-shadow: none;
     position: relative;

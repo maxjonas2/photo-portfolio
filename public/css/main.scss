@@ -390,7 +390,7 @@ button {
 
   @media (max-width: $breakpoint-small) {
     background-color: transparent;
-    padding: 0rem;
+    padding: 0rem !important;
     border-radius: 0px;
     box-shadow: none;
     position: relative;
