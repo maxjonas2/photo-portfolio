@@ -234,12 +234,15 @@ function initiateLightbox(object, idList) {
     }
   });
 
-  nextButton.onclick = () => {
-    lightboxChangeImage("next", lightboxContainer, object, idList);
-  };
-  backButton.onclick = () => {
-    lightboxChangeImage("back", lightboxContainer, object, idList);
-  };
+  if (nextButton || backButton) {
+    nextButton.onclick = () => {
+      lightboxChangeImage("next", lightboxContainer, object, idList);
+    };
+
+    backButton.onclick = () => {
+      lightboxChangeImage("back", lightboxContainer, object, idList);
+    };
+  }
 
   lightboxOverlay.classList.add("shown");
 
