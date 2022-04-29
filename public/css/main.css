@@ -608,7 +608,7 @@ span.shadow-large {
 .lightbox-container img {
   border-radius: 2px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  max-height: 80vw;
+  max-height: 80vh;
 }
 .lightbox-container img.image-svg {
   box-shadow: none;
