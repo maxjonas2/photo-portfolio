@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "./Image";
 import styled from "styled-components";
+import LightboxCarousel from "./LightboxCarousel";
 
 export const ImageGrid = props => {
-  const { images } = props;
-
   // const [loadedImages, setLoadedImages] = useState([]);
 
   // const countRef = useRef(3);
@@ -26,15 +25,18 @@ export const ImageGrid = props => {
   //   console.log("loaded images", loadedImages[0]);
   // }, [loadedImages]);
 
-  const lastImageRef = useRef();
-
   // useEffect(() => {
   //   if (!lastImageRef.current || !endReachedObserver.current) return;
   //   endReachedObserver.current.observe(lastImageRef.current);
   // });
 
+  const { images } = props;
+  const lastImageRef = useRef();
+  console.log(images);
+
   return (
     <>
+      <LightboxCarousel carouselItems={images} />
       <ImageGridComponent>
         {images.map((image, index) => {
           return (
@@ -63,4 +65,14 @@ const ImageGridComponent = styled.div`
     object-fit: cover;
     object-position: center top;
   }
+`;
+
+const CarouselPhoto = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 2rem;
+  position: absolute;
+  inset: 0;
 `;

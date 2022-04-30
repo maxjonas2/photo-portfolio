@@ -16,7 +16,7 @@ const Image = React.forwardRef((props, ref) => {
           setLoaded(true);
         }}
         ref={ref}
-        loading="lazy"
+        loading={"lazy"}
       />
     </ImageContainer>
   );

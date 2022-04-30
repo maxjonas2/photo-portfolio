@@ -5,9 +5,11 @@ import Homepage from "./pages/Homepage";
 import "./css/main.css";
 import LightboxCarousel from "./components/LightboxCarousel";
 
+// basename="/public/galleries/galleries-app/build"
+
 const App = () => {
   return (
-    <Router basename="/public/galleries/galleries-app/build">
+    <Router>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/:album" element={<Homepage />} />

@@ -1,7 +1,8 @@
 *,
 *::after,
 *::before {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -28,17 +29,25 @@
 }
 
 .centered-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 p.center {
   text-align: center;
 }
+
 p.faded {
   color: rgba(0, 0, 0, 0.38);
 }
+
 p.note {
   font-size: 0.8rem;
 }
@@ -61,19 +70,32 @@ strong {
 }
 
 .horizontal-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .horizontal-items.start {
-  justify-content: start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   gap: 2em;
 }
 
 .horizontal-items.centered {
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 2rem;
 }
 
@@ -82,11 +104,12 @@ strong {
 }
 
 .object-fit-left {
-  object-position: center left;
+  -o-object-position: center left;
+     object-position: center left;
 }
 
 .object-fit-right {
-  object-position: center right;
+  -o-object-position: center right;
+     object-position: center right;
 }
-
 /*# sourceMappingURL=basic.css.map */
