@@ -697,7 +697,6 @@ span.shadow-large {
   background-color: rgba(255, 255, 255, 0.4);
   color: black;
   font-weight: bold;
-  margin: 0 1rem;
   border-radius: calc(var(--size) / 2);
   cursor: pointer;
   -webkit-transition: background-color 150ms ease;
@@ -713,6 +712,15 @@ span.shadow-large {
           transform: scaleX(-1);
 }
 
+.invert-horizontal {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+.btn-lightbox {
+  opacity: 0.6;
+}
+
 .btn-lightbox-close {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -724,8 +732,8 @@ span.shadow-large {
       -ms-flex-align: center;
           align-items: center;
   position: fixed;
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   top: 1rem;
   right: 1rem;
   background-color: rgba(255, 255, 255, 0.25);
@@ -742,7 +750,7 @@ span.shadow-large {
   position: absolute;
   left: 0;
   right: 0;
-  padding: 4rem;
+  padding: 1rem;
 }
 
 /* ----- FOOTER STYLE ----- */

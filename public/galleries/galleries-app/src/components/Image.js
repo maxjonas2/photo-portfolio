@@ -5,7 +5,7 @@ import Loader from "../assets/svg/Loader";
 const Image = React.forwardRef((props, ref) => {
   const [loaded, setLoaded] = useState(false);
 
-  const { image } = props;
+  const { image, onClick } = props;
 
   return (
     <ImageContainer loaded={loaded}>
@@ -16,6 +16,7 @@ const Image = React.forwardRef((props, ref) => {
           setLoaded(true);
         }}
         ref={ref}
+        onClick={onClick}
         loading={"lazy"}
       />
     </ImageContainer>

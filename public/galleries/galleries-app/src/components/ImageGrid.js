@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "./Image";
 import styled from "styled-components";
-import LightboxCarousel from "./LightboxCarousel";
+import { Lightbox } from "./Lightbox";
 
 export const ImageGrid = props => {
   // const [loadedImages, setLoadedImages] = useState([]);
@@ -30,13 +30,29 @@ export const ImageGrid = props => {
   //   endReachedObserver.current.observe(lastImageRef.current);
   // });
 
+  function changeImage(direction) {
+    if (direction === "next") {
+      setCurrentImageIndex(currentImageIndex + 1);
+    } else {
+      setCurrentImageIndex(currentImageIndex === 0 ? 0 : currentImageIndex - 1);
+    }
+  }
+
   const { images } = props;
   const lastImageRef = useRef();
-  console.log(images);
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   return (
     <>
-      <LightboxCarousel carouselItems={images} />
+      {lightboxOpen ? (
+        <Lightbox
+          currentImage={images[currentImageIndex]}
+          changeImage={changeImage}
+          setLightboxOpen={setLightboxOpen}
+        />
+      ) : null}
       <ImageGridComponent>
         {images.map((image, index) => {
           return (
@@ -44,6 +60,7 @@ export const ImageGrid = props => {
               key={image.name}
               image={image}
               ref={index === images.length - 1 ? lastImageRef : null}
+              onClick={() => setLightboxOpen(true)}
             />
           );
         })}

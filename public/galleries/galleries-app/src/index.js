@@ -3,7 +3,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import "./css/main.css";
-import LightboxCarousel from "./components/LightboxCarousel";
 
 // basename="/public/galleries/galleries-app/build"
 
@@ -13,7 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/:album" element={<Homepage />} />
-        <Route path="/carousel" element={<LightboxCarousel />} />
+        {/* <Route path="/carousel" element={<LightboxCarousel />} /> */}
       </Routes>
     </Router>
   );
