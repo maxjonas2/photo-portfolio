@@ -482,10 +482,6 @@ span.shadow-large {
   transform: scaleX(-1);
 }
 
-.btn-lightbox {
-  opacity: 0.6;
-}
-
 .btn-lightbox-close {
   @include centered-items;
   position: fixed;

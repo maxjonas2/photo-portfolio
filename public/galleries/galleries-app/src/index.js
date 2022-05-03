@@ -8,7 +8,7 @@ import "./css/main.css";
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/public/galleries/galleries-app/build">
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/:album" element={<Homepage />} />
