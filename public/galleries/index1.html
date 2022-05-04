@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Josi's Portfolio</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script defer src="../dist/bundle.js"></script> -->
+    <script defer src="../javascript/index.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Raleway:wght@200;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+  </head>
+  <body>
+    <header class="header-main overlaid">
+      <div class="content header-content horizontal-items">
+        <div style="visibility: hidden" class="logo">jKieling</div>
+        <nav>
+          <ul class="horizontal-items">
+            <li class="nav-permanent">
+              <a class="chip" href="../">Home</a>
+            </li>
+            <li class="nav-permanent">
+              <a class="chip" href="../#section-about">About</a>
+            </li>
+            <li><a class="chip" href="../#section-contact">Contact</a></li>
+            <li>
+              <a href="https://www.instagram.com/j.kieling">
+                <img
+                  width="28"
+                  class="svg-link"
+                  src="../website_assets/instagram-logo.svg"
+                  alt=""
+                />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="header-placeholder"></div>
+
+    <div class="lightbox-overlay">
+      <button
+        class="btn btn-lightbox-close centered-items"
+        id="btn-lightbox-close"
+      >
+        <img src="../website_assets/svg/close.svg" alt="" />
+      </button>
+      <div class="lightbox-container">
+        <div class="lightbox-image-container"></div>
+        <div class="lightbox-controls horizontal-items">
+          <button class="btn lightbox-btn" id="lightbox-btn-back">
+            <img
+              class="image-svg"
+              src="../website_assets/svg/arrow.svg"
+              alt=""
+            />
+          </button>
+          <button class="btn lightbox-btn" id="lightbox-btn-next">
+            <img
+              class="image-svg"
+              src="../website_assets/svg/arrow.svg"
+              alt=""
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="content flow gallery-mosaic-container">
+        <div class="container-portfolio-picker">
+          <!-- <div class="selector-chip"></div> -->
+          <a
+            data-value="concerts"
+            class="normal upper category-picker selected"
+          >
+            Color
+          </a>
+          <a data-value="bw" class="normal upper category-picker">
+            Black & White
+          </a>
+          <a data-value="portrait" class="normal upper category-picker">
+            Portraits
+          </a>
+        </div>
+        <div class="gallery-mosaic" id="gallery-mosaic">
+          <!-- Imaged loaded dynamically via script -->
+        </div>
+      </div>
+      <script></script>
+    </section>
+  </body>
+</html>
