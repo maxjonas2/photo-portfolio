@@ -751,6 +751,11 @@ span.shadow-large {
   left: 0;
   right: 0;
   padding: 1rem;
+  pointer-events: none;
+}
+
+.lightbox-controls button {
+  pointer-events: all;
 }
 
 /* ----- FOOTER STYLE ----- */

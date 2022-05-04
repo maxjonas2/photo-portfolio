@@ -1,6 +1,12 @@
 import ReactDom from "react-dom/client";
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  HashRouter
+} from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import "./css/main.css";
 
@@ -8,11 +14,12 @@ import "./css/main.css";
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/public/galleries">
       <Routes>
+        <Route path=":album" element={<Homepage />}>
+          <Route path=":photo" element={<Homepage lightboxOpen />} />
+        </Route>
         <Route path="/" element={<Homepage />} />
-        <Route path="/:album" element={<Homepage />} />
-        {/* <Route path="/carousel" element={<LightboxCarousel />} /> */}
       </Routes>
     </Router>
   );

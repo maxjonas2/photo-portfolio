@@ -1,9 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Image from "./Image";
 import styled from "styled-components";
 import { Lightbox } from "./Lightbox";
 
-export const ImageGrid = props => {
+export const ImageGrid = ({ images, openImage, imageViaUrl }) => {
+  console.log("image via url? ", imageViaUrl);
   // const [loadedImages, setLoadedImages] = useState([]);
 
   // const countRef = useRef(3);
@@ -33,17 +35,54 @@ export const ImageGrid = props => {
   function changeImage(direction) {
     if (direction === "next") {
       setCurrentImageIndex(currentImageIndex + 1);
-    } else {
-      setCurrentImageIndex(currentImageIndex === 0 ? 0 : currentImageIndex - 1);
+    } else if (direction === "previous") {
+      if (currentImageIndex === 0) {
+        setCurrentImageIndex(0);
+        setLightboxOpen(false);
+      } else {
+        setCurrentImageIndex(currentImageIndex - 1);
+      }
     }
   }
 
-  const { images } = props;
   const lastImageRef = useRef();
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const navigate = useNavigate();
+  const params = useParams();
 
+  const [currentImageIndex, setCurrentImageIndex] = useState(
+    params?.photo ? parseInt(params.photo) : 0
+  );
+  const [lightboxOpen, setLightboxOpen] = useState(openImage ? true : false);
+  const [imageLoading, setImageLoading] = useState(false);
+
+  useEffect(() => {
+    if (lightboxOpen === false) {
+      navigate(`/${params.album}`, { replace: true });
+    }
+  }, [lightboxOpen]);
+
+  const navigateTo = {
+    next: () => {
+      setImageLoading(true);
+      setCurrentImageIndex(currentImageIndex + 1);
+      navigate((currentImageIndex + 1).toString(), {
+        replace: true
+      });
+    },
+    previous: () => {
+      if (currentImageIndex === 0) {
+        setCurrentImageIndex(0);
+        setLightboxOpen(false);
+      } else {
+        setImageLoading(true);
+        setCurrentImageIndex(currentImageIndex - 1);
+        navigate((currentImageIndex - 1).toString(), {
+          replace: true
+        });
+      }
+    }
+  };
   return (
     <>
       {lightboxOpen ? (
@@ -51,19 +90,30 @@ export const ImageGrid = props => {
           currentImage={images[currentImageIndex]}
           changeImage={changeImage}
           setLightboxOpen={setLightboxOpen}
+          navigateTo={navigateTo}
+          imageLoading={imageLoading}
+          setImageLoading={setImageLoading}
         />
       ) : null}
       <ImageGridComponent>
-        {images.map((image, index) => {
-          return (
-            <Image
-              key={image.name}
-              image={image}
-              ref={index === images.length - 1 ? lastImageRef : null}
-              onClick={() => setLightboxOpen(true)}
-            />
-          );
-        })}
+        {!openImage
+          ? images.map((image, index) => {
+              return (
+                <Image
+                  key={image.name}
+                  image={image}
+                  ref={index === images.length - 1 ? lastImageRef : null}
+                  onClick={() => {
+                    setCurrentImageIndex(index);
+                    setLightboxOpen(true);
+                    navigate(index.toString(), {
+                      replace: true
+                    });
+                  }}
+                />
+              );
+            })
+          : null}
       </ImageGridComponent>
     </>
   );
@@ -84,12 +134,12 @@ const ImageGridComponent = styled.div`
   }
 `;
 
-const CarouselPhoto = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 2rem;
-  position: absolute;
-  inset: 0;
-`;
+// const CarouselPhoto = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   font-weight: bold;
+//   font-size: 2rem;
+//   position: absolute;
+//   inset: 0;
+// `;

@@ -5,7 +5,7 @@ import { AlbumPicker } from "../components/AlbumPicker.js";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ImageGrid } from "../components/ImageGrid.js";
 
-const Homepage = () => {
+const Homepage = ({ imageViaUrl }) => {
   const origin = "https://jkieling.netlify.app";
 
   const params = useParams();
@@ -53,7 +53,13 @@ const Homepage = () => {
             selected={params.album}
           />
 
-          {images.length !== 0 && <ImageGrid images={images} />}
+          {images.length !== 0 && (
+            <ImageGrid
+              images={images}
+              openImage={params?.photo}
+              imageViaUrl={imageViaUrl}
+            />
+          )}
 
           {/* <div className="gallery-mosaic" id="gallery-mosaic">
             {images.length > 0
