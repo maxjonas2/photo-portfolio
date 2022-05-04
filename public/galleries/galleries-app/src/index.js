@@ -14,7 +14,7 @@ import "./css/main.css";
 
 const App = () => {
   return (
-    <Router basename="/public/galleries">
+    <Router basename="http://www.jkieling.com/galleries/">
       <Routes>
         <Route path=":album" element={<Homepage />}>
           <Route path=":photo" element={<Homepage lightboxOpen />} />
