@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import std from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Loader from "../assets/svg/Loader";
 import close from "../assets/svg/close.svg";
 import arrow from "../assets/svg/arrow.svg";
@@ -12,6 +12,17 @@ export const Lightbox = ({
   setImageLoading
 }) => {
   const fillRef = useRef();
+  const captionRef = useRef();
+
+  // function fadeCaption() {
+  //   if (captionRef.current) {
+  //     captionRef.current.animate([{ opacity: 1 }, { opacity: 0.5 }], {
+  //       duration: 250,
+  //       delay: 2000,
+  //       fill: "forwards"
+  //     });
+  //   }
+  // }
 
   useEffect(() => {
     const exitLightboxOnClick = e => {
@@ -52,13 +63,23 @@ export const Lightbox = ({
   return (
     <Fill className="centered-items fill" ref={fillRef}>
       <LightboxContainer className="centered-items">
-        <picture>
-          <LightboxImage
-            src={currentImage.url.replace("small", "large")}
-            alt="Image"
-            onLoad={() => setImageLoading(false)}
-          />
-        </picture>
+        <ImageView>
+          <picture>
+            <LightboxImage
+              src={currentImage.url.replace("small", "large")}
+              alt="Image"
+              onLoad={() => {
+                setImageLoading(false);
+                // fadeCaption();
+              }}
+            />
+          </picture>
+          {imageLoading ? null : (
+            <p className="image-caption serif" ref={captionRef}>
+              Portfolio image
+            </p>
+          )}
+        </ImageView>
 
         <div className="lightbox-controls horizontal-items">
           <button
@@ -98,7 +119,7 @@ export const Lightbox = ({
   );
 };
 
-const Fill = std.div`
+const Fill = styled.div`
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -107,8 +128,26 @@ const Fill = std.div`
   margin: 0px !important;
 `;
 
-const LightboxContainer = std.div``;
+const LightboxContainer = styled.div``;
 
-const LightboxImage = std.img`
+const LightboxImage = styled.img`
   max-height: 90vh;
+`;
+
+const ImageView = styled.div`
+  position: relative;
+  height: fit-content;
+  overflow: hidden;
+
+  .image-caption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 0.2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
 `;
