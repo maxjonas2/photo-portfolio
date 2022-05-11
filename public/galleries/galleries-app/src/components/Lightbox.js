@@ -140,6 +140,7 @@ const ImageView = styled.div`
   overflow: hidden;
 
   .image-caption {
+    visibility: hidden;
     position: absolute;
     inset: auto 0 0 0;
     padding: 0.2rem;
