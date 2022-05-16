@@ -64,9 +64,9 @@ function getResponse(body, statusCode = 200) {
 const handler = async event => {
   origin = event.headers.origin;
   try {
-    const bucket = event.queryStringParameters.bucket || "concerts";
+    const bucket = event.queryStringParameters.bucket || "color";
     switch (bucket) {
-      case "concerts": {
+      case "color": {
         const bucketId = "concerts-small";
         const files = await getFiles(bucketId);
         return getResponse(generateJSON(files, bucketId));

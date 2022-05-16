@@ -27,10 +27,10 @@ const Homepage = ({ imageViaUrl }) => {
   React.useEffect(() => {
     console.log(params);
     if (!params.album) {
-      navigate("concerts", { replace: true });
+      navigate("color", { replace: true });
       return;
     }
-    fetchLinks(params.album ? params.album : "concerts")
+    fetchLinks(params.album ? params.album : "color")
       .then(response => response.json())
       .then(data => {
         setImages(data);
@@ -38,7 +38,7 @@ const Homepage = ({ imageViaUrl }) => {
   }, [params]);
 
   const albums = [
-    { value: "concerts", label: "Concerts" },
+    { value: "color", label: "Color" },
     { value: "bw", label: "Black & White" },
     { value: "portrait", label: "Portraits" }
   ];
