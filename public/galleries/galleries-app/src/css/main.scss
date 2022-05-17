@@ -563,7 +563,8 @@ footer {
   cursor: pointer;
   transition: color 0.5s ease;
   color: rgb(100, 100, 100);
-  font-size: 1.1rem;
+  font-size: 1rem;
+  padding: 0.5rem 0;
 
   &:hover {
     text-decoration: underline;
