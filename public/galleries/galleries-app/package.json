@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "production-build" : "react-scripts build && mv build ../"
+    "production-build": "react-scripts build && move build ../ && move ../build/* ../ && move ../build/static ../", 
+    "clean-build-files" : "del-cli --force ../index.html ../asset-manifest.json ../static"
   },
   "eslintConfig": {
     "extends": [
@@ -38,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "del-cli": "^4.0.1"
   }
 }
