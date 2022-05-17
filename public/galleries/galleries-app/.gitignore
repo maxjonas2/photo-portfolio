@@ -6,7 +6,8 @@
 .pnp.
 
 # SASS
-/src/css/*.scss
+src/css/*.scss
+src/css/*.sass
 
 # testing
 /coverage
