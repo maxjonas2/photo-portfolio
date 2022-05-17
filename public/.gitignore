@@ -4,5 +4,5 @@ node_modules
 
 # SASS
 
-css/*.scss
-css/*.sass
+/css/*.scss
+/css/*.sass
