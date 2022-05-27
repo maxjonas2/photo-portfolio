@@ -363,7 +363,7 @@ button {
   cursor: pointer;
 
   &:hover {
-    color: white;
+    color: var(--bg-color);
   }
 }
 

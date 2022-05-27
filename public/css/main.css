@@ -145,7 +145,7 @@ html {
 body {
   font-family: var(--font-text), sans-serif;
   background-color: var(--bg-color);
-  color: #d2d2d2;
+  color: rgb(210, 210, 210);
   letter-spacing: 1.2px;
   scroll-behavior: smooth;
   letter-spacing: 1px;
@@ -223,11 +223,11 @@ nav a:not(.btn-link):hover {
 
 .btn-link {
   padding: 0.5rem 1.2rem;
-  border: 1px solid #c8c8c8;
+  border: 1px solid rgb(200, 200, 200);
   transition: background-color 0.1s ease, color 0.1s ease;
 }
 .btn-link:hover {
-  background-color: gainsboro;
+  background-color: rgb(220, 220, 220);
   color: black;
 }
 
@@ -445,7 +445,7 @@ button {
   cursor: pointer;
 }
 .btn:hover {
-  color: white;
+  color: var(--bg-color);
 }
 
 .hero-cta {
@@ -461,7 +461,7 @@ button {
 }
 
 .shadowed-card {
-  background-color: #1e1e1e;
+  background-color: rgb(30, 30, 30);
   border-radius: 4px;
   box-shadow: 0 30px 20px -30px rgba(0, 0, 0, 0.65);
   position: relative;
@@ -709,7 +709,7 @@ footer ul > * + * {
   margin-right: 1rem;
   cursor: pointer;
   transition: color 0.5s ease;
-  color: #646464;
+  color: rgb(100, 100, 100);
   font-size: 1rem;
 }
 .category-picker:hover {
@@ -804,7 +804,7 @@ img.shown {
   content: "";
   width: 154px;
   height: 154px;
-  background-image: linear-gradient(to right bottom, #919191, #919191);
+  background-image: linear-gradient(to right bottom, rgb(145, 145, 145), rgb(145, 145, 145));
   filter: saturate(0);
   position: absolute;
   border-radius: 1000px;
