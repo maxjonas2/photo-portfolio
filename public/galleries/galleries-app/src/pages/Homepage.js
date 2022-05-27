@@ -25,7 +25,7 @@ const Homepage = ({ imageViaUrl }) => {
   const [images, setImages] = useState([]);
 
   React.useEffect(() => {
-    console.log(params);
+    // console.log(params);
     if (!params.album) {
       navigate("color", { replace: true });
       return;
@@ -35,7 +35,7 @@ const Homepage = ({ imageViaUrl }) => {
       .then(data => {
         setImages(data);
       });
-  }, [params]);
+  }, [params?.album]);
 
   const albums = [
     { value: "color", label: "Color" },

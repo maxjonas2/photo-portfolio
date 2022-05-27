@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Lightbox } from "./Lightbox";
 
 export const ImageGrid = ({ images, openImage, imageViaUrl }) => {
-  console.log("image via url? ", imageViaUrl);
+  // console.log("image via url? ", imageViaUrl);
   // const [loadedImages, setLoadedImages] = useState([]);
 
   // const countRef = useRef(3);
@@ -31,6 +31,10 @@ export const ImageGrid = ({ images, openImage, imageViaUrl }) => {
   //   if (!lastImageRef.current || !endReachedObserver.current) return;
   //   endReachedObserver.current.observe(lastImageRef.current);
   // });
+
+  const [lastReached, setLastReached] = useState(false);
+
+  console.log("open image? ", openImage);
 
   function changeImage(direction) {
     if (direction === "next") {
@@ -61,6 +65,10 @@ export const ImageGrid = ({ images, openImage, imageViaUrl }) => {
       navigate(`/${params.album}`, { replace: true });
     }
   }, [lightboxOpen]);
+
+  useEffect(() => {
+    setLastReached(images.length - currentImageIndex <= 1);
+  }, [currentImageIndex]);
 
   const navigateTo = {
     next: () => {
@@ -93,27 +101,26 @@ export const ImageGrid = ({ images, openImage, imageViaUrl }) => {
           navigateTo={navigateTo}
           imageLoading={imageLoading}
           setImageLoading={setImageLoading}
+          lastReached={lastReached}
         />
       ) : null}
       <ImageGridComponent>
-        {!openImage
-          ? images.map((image, index) => {
-              return (
-                <Image
-                  key={image.name}
-                  image={image}
-                  ref={index === images.length - 1 ? lastImageRef : null}
-                  onClick={() => {
-                    setCurrentImageIndex(index);
-                    setLightboxOpen(true);
-                    navigate(index.toString(), {
-                      replace: true
-                    });
-                  }}
-                />
-              );
-            })
-          : null}
+        {images.map((image, index) => {
+          return (
+            <Image
+              key={image.name}
+              image={image}
+              ref={index === images.length - 1 ? lastImageRef : null}
+              onClick={() => {
+                setCurrentImageIndex(index);
+                setLightboxOpen(true);
+                navigate(index.toString(), {
+                  replace: true
+                });
+              }}
+            />
+          );
+        })}
       </ImageGridComponent>
     </>
   );
@@ -125,6 +132,10 @@ const ImageGridComponent = styled.div`
   grid-auto-rows: 300px;
   justify-content: center;
   gap: 33.33px;
+
+  @media (max-width: 550px) {
+    grid-auto-rows: initial;
+  }
 
   img {
     max-height: 100%;

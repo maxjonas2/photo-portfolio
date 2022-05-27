@@ -1,4 +1,4 @@
-console.log("javascript called");
+// console.log("javascript called");
 
 const contentType = "image/jpeg";
 const path = "FOTO1.jpg";
@@ -24,7 +24,7 @@ btnSignIn &&
 let scrollMap = 0;
 
 $(".menu-link").on("click", () => {
-  console.log("menu link clicked");
+  // console.log("menu link clicked");
   setTimeout(() => {
     closeMenu();
   }, 250);
@@ -184,7 +184,7 @@ function lightboxChangeImage(direction, container, object, idList) {
   }
 
   if (direction === "next" && lbCurrentIndex === imageCount - 1) {
-    return console.log("end of list");
+    // return console.log("end of list");
   }
 
   if (direction === "next") {
@@ -204,7 +204,7 @@ function lightboxChangeImage(direction, container, object, idList) {
 function openLightbox(event) {
   const escapeListener = e => {
     if (e.key.toLowerCase() === "escape") {
-      console.log("escape");
+      // console.log("escape");
       document.body.removeEventListener("keyup", escapeListener);
       lightboxToggle("closed");
     }
@@ -300,7 +300,7 @@ function populateGallery(data) {
 function callObserve() {
   setTimeout(() => {
     document.querySelectorAll(".fade-on-view").forEach(element => {
-      console.log("observer function called");
+      // console.log("observer function called");
       fadeOnViewObserver.observe(element);
     });
   }, 1500);

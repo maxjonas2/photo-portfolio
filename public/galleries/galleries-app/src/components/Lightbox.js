@@ -9,7 +9,8 @@ export const Lightbox = ({
   setLightboxOpen,
   navigateTo,
   imageLoading,
-  setImageLoading
+  setImageLoading,
+  lastReached
 }) => {
   const fillRef = useRef();
   const captionRef = useRef();
@@ -39,7 +40,12 @@ export const Lightbox = ({
         case "ArrowRight":
           // setImageLoading(true);
           // changeImage("next");
-          navigateTo.next();
+          if (lastReached) {
+            console.log("last reached");
+            return;
+          } else {
+            navigateTo.next();
+          }
           break;
         case "ArrowLeft":
           // setImageLoading(true);
@@ -93,6 +99,7 @@ export const Lightbox = ({
             <img src={arrow} className="invert-horizontal" />
           </button>
           <button
+            style={{ visibility: lastReached ? "hidden" : "visible" }}
             onClick={() => {
               // setImageLoading(true);
               // changeImage("next");

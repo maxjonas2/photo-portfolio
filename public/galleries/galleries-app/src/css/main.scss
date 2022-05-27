@@ -412,6 +412,10 @@ span.shadow-large {
   justify-content: center;
   gap: 33.33px;
 
+  @media (max-width: $breakpoint-small) {
+    grid-auto-rows: auto;
+  }
+
   img {
     height: 100%;
     width: 100%;
