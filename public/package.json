@@ -6,13 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "netlify dev",
-    "build": "npx webpack && sass ./css"
+    "build": "esbuild ./javascript/index.js --bundle --outfile=./javascript/out.js & sass css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@google-cloud/storage": "^5.18.2",
-    "firebase": "^9.6.10"
+    "esbuild": "^0.14.42",
+    "firebase": "^9.8.2",
+    "sass": "^1.52.1"
   }
 }

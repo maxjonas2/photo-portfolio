@@ -1,5 +1,30 @@
 // console.log("javascript called");
 
+// import { initializeApp } from "firebase/app";
+// import { firebaseConfig } from "./config.js";
+// import { getDatabase, ref, onValue } from "firebase/database";
+
+// const app = initializeApp(firebaseConfig);
+
+// const database = getDatabase(app);
+
+// onValue(ref(database, "homepage"), snapshot => {
+//   console.log(snapshot.val());
+// });
+
+// update(messages, {
+//   message: {
+//     content: "This is a message from Jonas",
+//     senderEmail: "abcd@shit.com",
+//     senderName: "Jonas Awesome",
+//     sentDate: "05/31/2022 02:29:00"
+//   }
+// })
+//   .then(data => console.log(data))
+//   .catch(data => console.log(data));
+
+// console.log(updatePromise);
+
 const contentType = "image/jpeg";
 const path = "FOTO1.jpg";
 
