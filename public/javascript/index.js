@@ -3,6 +3,10 @@
 const contentType = "image/jpeg";
 const path = "FOTO1.jpg";
 
+function qs(str, element = window.document) {
+  return element.querySelector(str);
+}
+
 const HEADER_HIDDEN_SCROLL_POINT = 300;
 const HERO = document.querySelector(".hero-container");
 
@@ -44,12 +48,13 @@ const hideMenuCallBack = () => {
   $(menuContainer).hide();
 };
 
-menu &&
+if (menu) {
   menu.addEventListener("transitionend", () => {
     if (!isMenuOpen) {
       hideMenuCallBack();
     }
   });
+}
 
 function openMenu() {
   isMenuOpen = true;
@@ -65,10 +70,8 @@ function closeMenu() {
 }
 
 function moveBackground() {
-  const scrollMap = window.scrollY / 45;
-  HERO ? (HERO.style.backgroundPosition = `center ${scrollMap * 25}px`) : null;
-  // document.body.style.backgroundColor = `hsl(250, 0%, ${scrollMap / 2}%)`;
-  // requestAnimationFrame(moveBackground);
+  if (!HERO) return;
+  HERO.style.backgroundPosition = `center ${window.scrollY * 0.5555}px`;
 }
 
 moveBackground();
@@ -77,7 +80,7 @@ window.addEventListener("scroll", () => {
   requestAnimationFrame(moveBackground);
 });
 
-let scrollInterval = setInterval(checkScroll, 1000);
+let scrollInterval = setInterval(checkScroll, 500);
 
 function checkScroll() {
   const headerShown = window.scrollY < HEADER_HIDDEN_SCROLL_POINT;
@@ -123,6 +126,7 @@ Array.from(document.getElementsByClassName("children-slide")).forEach(
 
 /*  ----- GALLERY FUNCTIONS ---- */
 
+/*
 let lightboxOpen = false;
 let lbCurrentIndex = 0;
 let imageCount = 0;
@@ -349,10 +353,13 @@ $(() => {
 });
 
 loadGallery("concerts");
+*/
 
 /* ----- CONTACT FORM LOGIC ----- */
 
+/*
 $("#form-contact").on("submit", e => {
   e.preventDefault();
   const data = new FormData(e.target);
 });
+*/
