@@ -868,4 +868,11 @@ img.shown {
   cursor: pointer;
 }
 
+.text-email {
+  font-size: 1.1rem;
+}
+.text-email a[href] {
+  color: white;
+}
+
 /*# sourceMappingURL=main.css.map */

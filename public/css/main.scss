@@ -812,3 +812,11 @@ img.shown {
   width: 150px;
   cursor: pointer;
 }
+
+.text-email {
+  font-size: 1.1rem;
+
+  a[href] {
+    color: white;
+  }
+}
